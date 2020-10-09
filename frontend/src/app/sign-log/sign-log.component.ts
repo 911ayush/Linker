@@ -11,8 +11,8 @@ import { ConnectionServiceService } from "../connection-service.service";
   styleUrls: ['./sign-log.component.css']
 })
 export class SignLogComponent{
-  registerUserData ={};
-  loginUserData = {};
+  registerUserData:any={};
+  loginUserData:any= {};
 
   constructor(private socualAuthService: SocialAuthService,private authService: ConnectionServiceService) { }
   signInWithGoogle(): void {

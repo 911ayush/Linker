@@ -11,5 +11,5 @@ export class NotificationPageComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
+  notifications=[{name:"ayush"},{name:"Sudyut"},{name:"Boss"},{name:"Divyansh"}];
 }
