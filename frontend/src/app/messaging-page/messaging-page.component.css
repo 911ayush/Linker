@@ -1,0 +1,119 @@
+
+.div-header{
+    position: fixed;
+    width: 100%;
+    min-width: 1300px;
+    margin-bottom: 40px;
+}
+.message-body{
+    padding-top: 90px;
+}
+.message-page-right{
+    float: left;
+    width:75%;
+    margin-top: 30px;
+}
+.connection-list{
+    float: left;
+    margin-left: 90px;
+    width:29%;
+    border: 1px solid rgb(136, 136, 136);
+    box-shadow: 0px 3px 10px rgb(148, 143, 143);
+    min-height:300px ;
+}
+.list-header{
+    height: 30px;
+    border-bottom: 1px solid rgb(136, 136, 136);
+    padding:15px 15px 5px 15px;
+}
+.list-header h{
+    font-size: 20px;
+    font-weight: bold;
+}
+.icon{
+    float: right;
+    font-weight: bold;
+}
+.example-additional-selection {
+    opacity: 0.75;
+    font-size: 0.75em;
+}
+.search-option{
+    height: 30px;
+    border-bottom: 1px solid rgb(136, 136, 136);
+    padding:0px 15px 15px 15px;
+}
+.search-form {
+    min-width: 150px;
+    max-width: 500px;
+    width: 100%;
+  }
+  
+  .search-full-width {
+    width: 100%;
+  }
+.contect-list{
+    width: 100%;
+    padding:0px;
+    height: 100px;
+}
+.contect{
+    height:50px;
+    padding:5px 9px;
+    border-bottom: 1px solid rgb(136, 136, 136);
+}
+.dp{
+    float: left;
+    border-radius: 50%;
+}
+.messenger-name{
+    padding-top: 10px;
+    margin-left: 10px;
+    font-size: 30px;
+    float: left;
+
+}
+.messaging-area{
+    height: 500px;
+    border: 1px solid rgb(136, 136, 136);
+    box-shadow: 0px 3px 10px rgb(148, 143, 143);
+    float: left;
+    width:58%;
+}
+.contect-detail{
+    border-bottom:  1px solid rgb(136, 136, 136);
+    height:60px;
+}
+.messaging-manage{
+    height:360px;
+    padding:10px 3px;
+    background-color: white;
+    overflow-y: auto;
+}
+.message{
+    padding:3px;
+    margin-top: 4px;
+    border-radius: 3px;
+    background-color: rgb(171, 238, 221);
+    width: 80%;
+}
+.create-message{
+    height: 59px;
+    background-color: rgb(241, 198, 198);
+}
+.send-icon{
+    font-size: 35px;
+    float: right;
+    margin-right: 15px;
+    margin-top: 12px;
+}
+.messa{
+    float: left;
+    width: 80%;
+    margin:1px 0px 2px 2px;
+    height: 52px;
+    background:transparent;
+    border-top: rgb(161, 161, 159);
+    border-right: rgb(161, 161, 159);
+    border-left: rgb(161, 161, 159);
+}

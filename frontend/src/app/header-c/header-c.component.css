@@ -1,0 +1,37 @@
+.header-body{
+    background-color: black;
+    margin: auto;
+    
+    /* //padding: 10px; */
+    height: 60px;
+    width:1300px;
+}
+.first-half{
+    display: inline-block;
+    width: 50%;
+}
+.icon{
+    font-size: 44px;
+    margin:7px 35px;
+    color:rgb(109, 164, 209);
+}
+.search{
+    width: 100%;
+    padding-top: 10px;
+    text-align: center;
+}
+input{
+    height: 30px;
+    width:300px;
+    font-size: 20px;
+    align-items: center;
+    background-color: rgb(226, 247, 245);
+    border: 1px solid transparent;
+    border-radius: 2px;
+}
+.second-half{
+    margin: 0px;
+    float: right;
+    height: 60px;
+    width: 50%;
+}

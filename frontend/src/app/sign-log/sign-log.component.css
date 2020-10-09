@@ -1,0 +1,66 @@
+body{
+    height: 100vh;
+}
+button{
+    margin-top: 20px;
+    background-color: rgb(152, 210, 236);
+    width: auto;
+    font-size: 20px;
+    border-radius: 5px;
+}
+.main-container{
+
+    width: 100%;
+    min-width: 1300px;
+    text-align: center;
+}
+#wrapper{
+    background-color: whitesmoke;
+    width: 40%;
+    height: auto;
+    border: 1px solid rgb(218, 208, 208);
+    margin: 100px 30% 40px 30%;
+    left: 30%;
+}
+.main-container-header{
+   width: 100%;
+   height: auto;
+   font-size: 19px;
+   font-family: SimSun-ExtB;
+}
+form{
+    height: auto;
+    width: 100%;
+    font-size: 20px;
+    padding: 10px 30px 40px 0px;
+}
+#log-tag{
+    padding-top: 16px;
+    width: 50%;
+    height: 50px;
+    display: inline-block;
+}
+#sign-tag{
+    padding-top: 16px;
+    width: 50%;
+    background-color: white;
+    height: 50px;
+    display: inline-block;
+}
+
+#logIn-form{
+    width: 100%;
+    height: auto;
+    display: block;
+}
+#logIn-form input{
+    height: 30px;
+}
+#signUp-form{
+    width: 100%;
+    
+    display: none; 
+}
+#signUp-form input{
+    height: 30px;
+}

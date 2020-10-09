@@ -1,0 +1,41 @@
+<div class="div-header">
+<app-header></app-header>
+</div>
+<div class="feed-body">
+    <div class="left">
+        <div class="menu">
+            <div class="group">
+                <p>group</p>
+            </div>
+            <div class="events">
+                <p>events</p>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="middle">
+        <div class="post-create-box">
+            <div class="post-create-box-input">
+                <div class="ico" (click)="openWritePostContainer()">
+                    <mat-icon class="icon write" aria-hidden="true" aria-label="home">edit</mat-icon>
+                </div>
+                <div class="text" (click)="openWritePostContainer()">
+                    <p>Start a post</p>
+                </div>
+            </div>
+            <div class="post-create-box-option">
+                <div class="option">
+                    <mat-icon (click)="openWritePostContainer()" class="icon pic" aria-hidden="true" aria-label="home">add_a_photo</mat-icon>
+                </div>
+                <div class="option">
+                    <mat-icon (click)="openWritePostContainer()" class="icon note" aria-hidden="true" aria-label="home">content_paste</mat-icon>
+                </div>
+            </div>
+        </div>
+        <post-templet></post-templet>
+        <post-templet></post-templet>
+    </div>
+    <notify-me></notify-me>
+    
+</div>

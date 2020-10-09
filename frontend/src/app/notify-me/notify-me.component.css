@@ -1,0 +1,23 @@
+.right{
+    float: left;
+    height: 100%;
+    width: 25%;
+    padding:30px 0px;
+}
+.right-notify{
+    width:80%;
+    border: 1px solid rgb(136, 136, 136);
+    box-shadow: 0px 3px 10px rgb(148, 143, 143);
+    border-radius: 3px;
+    background-color: white;
+    min-height: 200px;
+    
+}
+.notify-header{
+    padding:5px 4px 2px 7px;
+    background-color: rgba(54, 115, 155, 0.568);
+}
+span{
+    margin-left: 10px;
+    font-size: 20px;
+}

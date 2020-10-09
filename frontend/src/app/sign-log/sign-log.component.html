@@ -1,0 +1,53 @@
+<body>
+  <div class="main-container">
+    <div class="heading">
+      <h>Web Name</h>
+      <h1>For Developer</h1>
+      <h2>You Are A Step Away From Glory</h2>
+    </div>
+    <div id="wrapper">
+      <div class="main-container-header">
+        <p id="log-tag" (click)="headTologForm()">
+          Log In
+        </p>
+        <p id="sign-tag" (click)="headTosignForm()">
+          Sign In
+        </p>
+        
+      </div>
+      <br>
+      <div id="logIn-form">
+        <form class="form" (submit)="logIn()">
+          <Label>Email:   </Label>
+          <br>
+          <input [(ngModel)]="loginUserData.email" required  type="email"  size="60%" [ngModelOptions]="{standalone: true}" placeholder="email">
+          <br>
+          <br>
+          <br>
+          <label>Password:</label>
+          <br>
+          <input [(ngModel)]="loginUserData.password" required [ngModelOptions]="{standalone: true}" size="60%" placeholder="password...">
+          <br>
+          <button type="submit">LogIn</button>
+        </form>
+      </div>
+      <div id="signUp-form">
+        <form (submit)="signUp()">
+          <Label>Email:   </Label>
+          <br>
+          <input required  [(ngModel)]="registerUserData.email" [ngModelOptions]="{standalone: true}" type="email" size="60%"  placeholder="email">
+          <br>
+          <label>Password:</label>
+          <br>
+          <input required  [(ngModel)]="registerUserData.password" [ngModelOptions]="{standalone: true}"  size="60%" placeholder="password...">
+          <br>
+          <label>Confirm Password:</label>
+          <br>
+          <input required  [(ngModel)]="registerUserData.confirmPassword" [ngModelOptions]="{standalone: true}" size="60%" placeholder="confirm password...">
+          <br>
+          <button type="submit" >Sign Up</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</body>

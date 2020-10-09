@@ -1,0 +1,56 @@
+<div class="header">
+    <app-header-c></app-header-c>
+</div>
+<div class="manage-area">
+    <div class="manage-heading">
+        Manage Your Hiring Process  
+    </div>
+    <div class="left">
+        <div class="containt">
+            <div class="for">
+                Your Are Receiving from..
+            </div>
+            <div class="open" *ngFor="let post of posts">
+                <div class="post">
+                    {{post.post}}
+                </div>
+                <div class="form-area">
+                    <h (click)="formdisplay(post.post)">Application form</h>
+                    <div style="display: none;" [id]="post.post">
+                        <p>hiii</p>
+                        <p>hiii</p>
+                        <p>hiii</p>
+                    </div>
+                    <div class="control-btn">
+                        <button class="control" type="button" (click)="stopAccepting(area.post)">Stop Accepting</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="right">
+        <div class="containt">
+            <div class="for">
+                Applications
+            </div>
+            <div class="all-active" *ngFor="let post of posts">
+                <div class="post">
+                    {{post.post}}
+                </div>
+                <div class="form-area">
+                    <h (click)="displayappl(post.post)">Application Received from...</h>
+                    <div style="display: none;" [id]="post.post+'appl'">
+                       <ul>
+                           <li *ngFor='let applicant of applicants'>
+                               {{applicant.name}}
+                           </li>
+                       </ul>
+                    </div>
+                    <div class="control-btn">
+                        <button class="control-del" type="button" (click)="stopAccepting(area.post)">Delete Application</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,78 @@
+<div class="div-header">
+    <app-header-c></app-header-c>
+</div>
+<div class="message-body">
+    <div class="message-page-right">
+        <div class="connection-list">
+            <div class="list-header">
+                <h>Messaging</h>
+                <button class="icon" mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+                    <mat-icon class="icon" aria-hidden="false" aria-label="people">dehaze</mat-icon>
+                  </button>
+                  <mat-menu #menu="matMenu">
+                    <button (click)="openMessagingOption()" mat-menu-item>
+                      <mat-icon  >group_add</mat-icon>
+                      <span>New Group Conversation</span>
+                    </button>
+                    <button  (click)="openMessagingOption()" mat-menu-item disabled>
+                      <mat-icon  >insert_comment</mat-icon>
+                      <span>Message Request</span>
+                    </button>
+                  </mat-menu>
+            </div>
+            <div class="search-option">  
+                <form class="search-form">
+                    <mat-form-field class="search-full-width">
+                      <input type="text"
+                             placeholder="Search the contact"
+                             aria-label="Number"
+                             matInput
+                             [formControl]="myControl"
+                             [matAutocomplete]="auto">
+                      <mat-autocomplete #auto="matAutocomplete">
+                        <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+                          {{option}}
+                        </mat-option>
+                      </mat-autocomplete>
+                    </mat-form-field>
+                  </form>
+                    
+            </div>
+            <div class="contect-list">
+                <div class="contect">
+                    <img class="dp" src="..\assets\cancer-hospital.jpg" alt="not found" width="50" height=auto>
+                    <p class="messenger-name">name</p>
+                </div>
+                <div class="contect">
+                    <img class="dp" src="..\assets\cancer-hospital.jpg" alt="not found" width="50" height=auto>
+                    <p class="messenger-name">name</p>
+                </div>
+            </div>
+        </div>
+        <div class="messaging-area">
+            <div class="contect-detail">
+                <img class="dp" src="..\assets\cancer-hospital.jpg" alt="not found" width="50" height=auto>
+                <p class="messenger-name">name</p>
+            </div>
+            <div class="messaging-manage">
+                <div class="message" >
+                    <h>hii ayush ujfuweqnf vji vernvienrvuinrvj rjv wrvjr vje vhf vher vjw evkr venfvj rjkv wrjnvj vjk vjwnvjw vjk vj vjkwr vjk vjrvnuvnfv , vm vsdnvoqwnvqwj vjw vasdn cjwnvqruhvnerv  vm,sdncornvkj v vrnvme,r vjasd </h>
+                </div>
+            </div>
+            <div class="create-message">
+                <div class="write-message">
+                    <textarea (keydown.enter)="sendMessage()" class="messa" row="2" placeholder="write here...."></textarea>
+                </div>
+                <mat-icon (click)="sendMessage()" class="send-icon" aria-hidden="false" aria-label="people">near_me</mat-icon>
+            </div>
+        </div>
+    </div>
+    <notify-me>
+    
+    </notify-me>
+    
+</div>
+
+      
+
+

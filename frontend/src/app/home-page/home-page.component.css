@@ -1,0 +1,96 @@
+
+header{
+    /* min-width: 600px; */
+    height: 70px;
+    width: 100%;
+}
+.btn-area{
+    text-align: right;
+}
+#logo-div{
+    display: inline-block;
+    padding: 17px 0% 0% 20px;
+    height: 100%;
+    font-size: large;
+    width: 650px;
+}
+#logo-div p{
+    width:20px;
+}
+#log-btn-hub{
+    display: inline-block;
+    height: 100%;
+    width: 650px;
+    position: absolute; 
+   
+    color: rgb(143, 90, 21);
+}
+#login-btn{
+    display: inline-block;
+   
+    width:70px;
+    text-align: center;
+    padding-top: 4px;
+    
+    border: 1px solid rgb(121, 82, 32);
+    background-color: rgb(247, 202, 160);
+    height: 28px;
+    
+}
+#signup-btn{
+    display: inline-block;
+    width:70px;
+    padding-top: 4px;
+    margin-right:80px;
+    text-align: center;
+    border: 1px solid rgb(121, 82, 32);
+    background-color: rgb(247, 202, 160);
+    height: 28px;
+    margin:30px; 
+}
+.log-option{
+    background-color: cadetblue;
+    width: 50%;
+    padding:20px;
+}
+.log-header h{
+    
+    line-height: 1.6;
+    color: rgb(201, 194, 194);
+    font-size: 40px;
+    font-family: Comic Sans MS;
+}
+.log-content{
+    margin-top: 30px;
+    
+}
+.log-content h{
+    font-size: 28px;
+    font-weight: bold;
+    color: rgb(44, 42, 42);
+}
+.log-content p{
+    font-size: 18px;
+    margin: 9px;
+    color: rgb(44, 42, 42);
+}
+.log-content p1{
+    font-size: 18px;
+    margin: 9px;
+    background-color: rgb(39, 173, 84);
+    padding:2px 20px 2px 20px;
+    border: 1px solid transparent;
+    border-radius: 2px;
+    color: white;
+}
+.log-for-company{ 
+    display: inline-block;
+    width: 50%;
+    text-align: center;
+}
+.log-for-developer{
+
+    display: inline-block;
+    width: 50%;
+    text-align: center;
+}
