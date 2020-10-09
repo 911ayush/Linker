@@ -12,7 +12,7 @@ import { CManageComponent } from './c-manage/c-manage.component';
 import { FeedCComponent } from './feed-c/feed-c.component';
 import { MessaginCComponent } from './messagin-c/messagin-c.component';
 import { NotificationPageComponent } from './notification-page/notification-page.component';
-
+import { DevNetworkComponent } from './dev-network/dev-network.component';
 
 const routes: Routes = [
   { path: '' , component: HomePageComponent},
@@ -20,6 +20,7 @@ const routes: Routes = [
   { path: 'auth/developer' , component: SignLogComponent},
   { path: 'dev/feed' , component: FeedComponent,canActivate:[AuthGuard]},
   { path: 'dev/:id/notification' , component: NotificationPageComponent,canActivate:[AuthGuard]},
+  { path: 'dev/:id/network' , component: DevNetworkComponent,canActivate:[AuthGuard]},
   { path: 'message', component: MessagingPageComponent,canActivate:[AuthGuard]},
   { path: 'company/:id', component:CompanyPortalComponent,canActivate:[AuthGuard]},
   { path: 'company/:id/feed' , component: FeedCComponent,canActivate:[AuthGuard]},

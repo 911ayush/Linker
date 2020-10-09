@@ -37,6 +37,8 @@ import { CManageComponent } from './c-manage/c-manage.component';
 import { FeedCComponent } from './feed-c/feed-c.component';
 import { MessaginCComponent } from './messagin-c/messagin-c.component';
 import { NotificationPageComponent } from './notification-page/notification-page.component';
+import { DevNetworkComponent } from './dev-network/dev-network.component';
+
 
 
 
@@ -57,7 +59,8 @@ import { NotificationPageComponent } from './notification-page/notification-page
     CManageComponent,
     FeedCComponent,
     MessaginCComponent,
-    NotificationPageComponent
+    NotificationPageComponent,
+    DevNetworkComponent
   ],
   imports: [
     BrowserModule,

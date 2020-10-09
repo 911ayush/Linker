@@ -1,0 +1,26 @@
+.net-main{
+    width: 1300px;
+    margin:60px auto;
+}
+.container{
+    width:70%;
+    height:auto;
+    margin-top: 30px;
+    border: 1px solid rgb(136, 136, 136);
+    box-shadow: 0px 3px 10px rgb(148, 143, 143);
+    border-top-right-radius: 3px;
+    border-top-left-radius: 3px;
+}
+.top{
+    padding:10px;
+    height:auto;
+    font-size: 18px;
+}
+mat-divider{
+    border-bottom: 1px solid rgb(136, 136, 136);
+}
+.notification{
+    height:40px;
+    padding:20px 10px;
+    border-bottom:1px solid rgb(136, 136, 136);
+}
