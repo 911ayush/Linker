@@ -1,0 +1,82 @@
+.manage-area{
+    width: 100%;
+    min-width: 1350px;
+    height: auto;
+    margin:40px auto;
+}
+.manage-heading{
+    font-size: 30px;
+    text-align: center;
+    font-weight: bold;
+    font-family: MV Boli;
+    margin-bottom: 40px;
+}
+.left{
+    float: left;
+    width: 49%;
+    border-right:1px solid rgb(136, 136, 136);
+    height: auto;
+}
+
+.containt{
+    margin: 20px;
+}
+.for{
+    font-size: 25px;
+    text-align: center;
+    font-family: Lucida Sans Unicode;
+}
+.open{
+    border: 1px solid rgb(136, 136, 136);
+    box-shadow: 0px 3px 10px rgb(148, 143, 143);
+    margin:10px;
+    height: auto;
+    padding: 10px;
+    padding-bottom: 20px;
+}
+.post{
+    font-size: 17px;
+}
+
+#form{
+    height: 30px;
+    
+}
+.control-btn{
+    margin:0px 20px 20px 0px;
+    height: 10px;
+}
+.control{
+    background-color: rgb(182, 30, 30);
+    border: 0px solid transparent;
+    border-radius: 4px;
+    float: right;
+    font-size: 15px;
+    font-weight: bold;
+    width:140px;
+    height:30px;
+}
+.right{
+    float: left;
+    width: 49%;
+    height: auto;
+    border-left:1px solid rgb(136, 136, 136);
+}
+.all-active{
+    border: 1px solid rgb(136, 136, 136);
+    box-shadow: 0px 3px 10px rgb(148, 143, 143);
+    margin:10px;
+    height: auto;
+    padding: 10px;
+    padding-bottom: 20px;
+}
+.control-del{
+    background-color: rgb(182, 30, 30);
+    border: 0px solid transparent;
+    border-radius: 4px;
+    float: right;
+    font-size: 15px;
+    font-weight: bold;
+    width:180px;
+    height:30px;
+}

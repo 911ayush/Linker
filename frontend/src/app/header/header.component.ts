@@ -7,12 +7,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
   email="ayush";
-  search="search...."
+  search="";
   constructor() { }
 
   ngOnInit(): void {
   }
   onkeyup(){
-    console.log(this.email);
+    console.log(this.search);
   }
 }

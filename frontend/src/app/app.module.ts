@@ -19,6 +19,7 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatChipsModule } from '@angular/material/chips';
 import { AuthGuard } from './auth.guard';
 import { DragDropModule } from '@angular/cdk/drag-drop';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 import { SignLogComponent } from './sign-log/sign-log.component';
 import { HomePageComponent } from './home-page/home-page.component';
@@ -38,6 +39,9 @@ import { FeedCComponent } from './feed-c/feed-c.component';
 import { MessaginCComponent } from './messagin-c/messagin-c.component';
 import { NotificationPageComponent } from './notification-page/notification-page.component';
 import { DevNetworkComponent } from './dev-network/dev-network.component';
+import { CNetworkComponent } from './c-network/c-network.component';
+import { CnotificationPageComponent } from './cnotification-page/cnotification-page.component';
+import { JobpageComponent } from './jobpage/jobpage.component';
 
 
 
@@ -60,7 +64,10 @@ import { DevNetworkComponent } from './dev-network/dev-network.component';
     FeedCComponent,
     MessaginCComponent,
     NotificationPageComponent,
-    DevNetworkComponent
+    DevNetworkComponent,
+    CNetworkComponent,
+    CnotificationPageComponent,
+    JobpageComponent
   ],
   imports: [
     BrowserModule,
@@ -71,6 +78,7 @@ import { DevNetworkComponent } from './dev-network/dev-network.component';
     HttpClientModule,
     MatCardModule,
     MatListModule,
+    MatSnackBarModule,
     FormsModule,
     MatChipsModule,
     MatDividerModule,

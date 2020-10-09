@@ -1,0 +1,100 @@
+<div class="header">
+    <app-header></app-header>
+</div>
+<div class="manage-area">
+    <div class="manage-heading">
+        Manage Your Job Applications And Get Job Alerts   
+    </div>
+    <div class="left">
+        <div class="containt">
+            <div class="for">
+                New Openings From the Subscribed Companies
+            </div>
+            <div class="open" *ngFor="let post of posts">
+                <div class="post">
+                    {{post.post}}
+                </div>
+                <div class="form-area">
+                    <h (click)="formdisplay(post.post)">Application form</h>
+                    <div style="display: none;" [id]="post.post">
+                        <p>hiii</p>
+                        <p>hiii</p>
+                        <p>hiii</p>
+                        <div class="control-btn">
+                            <button class="control" type="button" (click)="stopAccepting(area.post)">Submit Form</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="right">
+        <div class="containt">
+            <div class="for">
+                Applied In..
+            </div>
+            <div class="all-active" *ngFor="let post of posts">
+                <div class="post">
+                    {{post.post}}
+                </div>
+                <div class="form-area">
+                    <h (click)="displayappl(post.post)">Application Received from...</h>
+                    <div style="display: none;" [id]="post.post+'appl'">
+                       <ul>
+                           <li *ngFor='let applicant of applicants'>
+                               {{applicant.name}}
+                           </li>
+                       </ul>
+                    </div>
+                    <div class="control-btn">
+                        <button class="control-del" type="button" (click)="stopAccepting(area.post)">Take Application Back</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="containt">
+            <div class="for">
+                Application Closed For..
+                <br>
+                <p3 style="font-size: 10px; color: brown;">*Cannot take any application back</p3>  
+            </div>
+            <div class="all-active" *ngFor="let post of posts">
+                <div class="post">
+                    {{post.post}}
+                </div>
+                <div class="form-area">
+                    <h (click)="displayappl(post.post)">Application Received from...</h>
+                    <div style="display: none;" [id]="post.post+'appl'">
+                       <ul>
+                           <li *ngFor='let applicant of applicants'>
+                               {{applicant.name}}
+                           </li>
+                       </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="containt">
+            <div class="for">
+                Accepted Applications
+                <br>
+                <p3 style="font-size: 10px; color: brown;">Congratulations...</p3>  
+            </div>
+            <div class="all-active" *ngFor="let post of posts">
+                <div class="post">
+                    {{post.post}}
+                </div>
+                <div class="form-area">
+                    <h (click)="displayappl(post.post)">Application Received from...</h>
+                    <div style="display: none;" [id]="post.post+'appl'">
+                       <ul>
+                           <li *ngFor='let applicant of applicants'>
+                               {{applicant.name}}
+                           </li>
+                       </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

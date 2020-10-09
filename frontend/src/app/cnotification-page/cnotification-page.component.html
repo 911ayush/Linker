@@ -1,0 +1,14 @@
+<app-header-c></app-header-c>
+<div class="noti-main">
+    <div class="recent">
+        <div class="top">
+            Recent
+        </div>
+        <mat-divider></mat-divider>
+        <div class="noification1y1">
+            <div class="notification" *ngFor="let notif of notifications">
+                <span routerLink="/dev/:id">{{notif.name}}</span>
+            </div>
+        </div>
+    </div>
+</div>

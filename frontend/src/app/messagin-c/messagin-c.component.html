@@ -22,7 +22,7 @@
             </div>
             <div class="search-option">  
                 <form class="search-form">
-                    <mat-form-field class="search-full-width">
+                    <mat-form-field class="search-full-width" >
                       <input type="text"
                              placeholder="Search the contact"
                              aria-label="Number"
@@ -31,7 +31,12 @@
                              [matAutocomplete]="auto">
                       <mat-autocomplete #auto="matAutocomplete">
                         <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
-                          {{option}}
+                          <div class="ayush">
+                            {{option}}
+                          </div>
+                          <div class="ayush">
+                            {{option}}
+                          </div>
                         </mat-option>
                       </mat-autocomplete>
                     </mat-form-field>

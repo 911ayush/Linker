@@ -1,0 +1,26 @@
+
+<app-header-c></app-header-c>
+<div class="net-main">
+    <div class="container">
+        <div class="top">
+            Pending
+        </div>
+        <mat-divider></mat-divider>
+        <div class="noification1y1">
+            <div class="notification" *ngFor="let notif of notifications">
+                <span routerLink="/dev/:id">{{notif.name}}</span>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="top">
+            Requests
+        </div>
+        <mat-divider></mat-divider>
+        <div class="noification1y1">
+            <div class="notification" *ngFor="let notif of notifications">
+                <span routerLink="/dev/:id">{{notif.name}}</span>
+            </div>
+        </div>
+    </div>
+</div>

@@ -17,8 +17,11 @@
 }
 .search{
     width: 100%;
-    padding-top: 10px;
+    padding-top: 9px;
     text-align: center;
+}
+.searchit{
+    padding:5px;
 }
 input{
     height: 30px;
