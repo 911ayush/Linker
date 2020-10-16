@@ -1,6 +1,26 @@
 .dev-page{
     width: 100%;
-    margin: 0px auto;
+    margin: 60px auto;
+}
+.dpc{
+    font-size: 30px;
+    height: auto;
+    line-height: 1;
+    margin: 13px auto;
+}
+.upbtn{
+    height: 40px;
+    margin:5px;
+}
+.dpPreview{
+    text-align: center;
+    width:50%;
+    height: auto;
+    float: right;
+    position: absolute;
+    left: 20%;
+    display: none;
+    background-color: white;
 }
 .right-corner{
     float: left;
@@ -35,8 +55,7 @@
     border: 4px solid rgb(78, 136, 136);
     height: 150px;
     text-align: center !important;
-    padding:6px 0px 0px 6px;
-    background-image: url("..\..\assets\cancer-hospital.jpg");
+    /* background-image: url("..\..\assets\cancer-hospital.jpg"); */
     border-radius: 50%;
 }
 .dpUp{

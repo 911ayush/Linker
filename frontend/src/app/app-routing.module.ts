@@ -31,7 +31,7 @@ const routes: Routes = [
   { path: 'company/:id/feed' , component: FeedCComponent,canActivate:[AuthGuard]},
   { path: 'company/:id/message' , component: MessaginCComponent,canActivate:[AuthGuard]},
   { path: 'company/:id/network' , component: CNetworkComponent,canActivate:[AuthGuard]},
-  { path: 'company/:id/manage', component:CManageComponent,canActivate:[AuthGuard]},
+  { path: 'company/:id/manage', component:CManageComponent},
   { path: 'company/:id/cnotification' , component: CnotificationPageComponent,canActivate:[AuthGuard]},
   { path: 'dev/:id', component:DevOwnerPageComponent,canActivate:[AuthGuard]},
   { path: '**', redirectTo:'/', pathMatch:"full"}

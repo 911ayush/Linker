@@ -10,8 +10,9 @@
     box-shadow: 0px 3px 10px rgb(148, 143, 143);
     border-radius: 3px;
     background-color: white;
-    min-height: 200px;
-    
+    height: 215px;
+    min-height: 215px;
+    overflow: hidden;
 }
 .notify-header{
     padding:5px 4px 2px 7px;
@@ -20,4 +21,9 @@
 span{
     margin-left: 10px;
     font-size: 20px;
+}
+.notification{
+    height: 30px;
+    font-size: 10px;
+    border-bottom: 1px solid  rgb(136, 136, 136);
 }

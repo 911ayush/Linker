@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ConnectionServiceService } from '../connection-service.service';
 
 @Component({
   selector: 'app-c-network',
@@ -7,9 +8,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CNetworkComponent implements OnInit {
 
-  constructor() { }
+  constructor(private connectionService: ConnectionServiceService) { }
 
   ngOnInit(): void {
+    this.fetchdata();
   }
-  notifications=[{name:"ayush"},{name:"Sudyut"},{name:"Boss"},{name:"Divyansh"}];
+  pending=[];
+  sent=[];
+  fetchdata(){
+    this.connectionService.getcnetworkReq(5).subscribe((data) => {
+      console.log(data);
+      this.pending = data.pending,
+      this.sent = data.sent
+    });
+  }
 }

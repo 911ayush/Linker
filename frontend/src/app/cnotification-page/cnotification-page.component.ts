@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ConnectionServiceService } from '../connection-service.service';
 
 @Component({
   selector: 'app-cnotification-page',
@@ -7,9 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CnotificationPageComponent implements OnInit {
 
-  constructor() { }
+  constructor(private connectionService:ConnectionServiceService) { }
 
   ngOnInit(): void {
+    this.fetchdata();
   }
-  notifications=[{name:"ayush"},{name:"Sudyut"},{name:"Boss"},{name:"Divyansh"}];
+  notifications=[];
+  fetchdata(){
+    this.connectionService.getcNotification(5).subscribe((data) => {
+      console.log(data);
+      this.notifications = data;
+    });
+  }
 }

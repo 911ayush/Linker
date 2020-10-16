@@ -1,4 +1,7 @@
-<app-header></app-header>
+<div>
+    <app-header></app-header>
+</div>
+
 <div class="dev-page">
     <div class="right-corner">
         <div class="profile-wrapper">
@@ -8,10 +11,10 @@
                         <img class="feed-image" src="..\assets\cancer-hospital.jpg" alt="not found" width="100%" height="200px">
                     </div>
                     <div class="profile-main">
-                        <h>appp</h>
-                        <div class="upload-dp" onclick="document.getElementById('dp').click();">
-                            <div for="dp">+</div>
-                            <input type="file" id="dp" name="dp" class="dpUp" accept="image/*">
+                        <h style="margin-left: 20px;">appp</h>
+                        <div  onclick="document.getElementById('dp').click();">
+                            <img class="upload-dp" [src]="dp" alt="server not connected"/>
+                            <input type="file" (change)="selectImage($event)" id="dp" name="file" class="dpUp" accept="image/*">
                         </div>
                         <div class="adding-option">
                             <div class="Add-fileds">
@@ -76,4 +79,12 @@
         
     </div>
     <notify-me></notify-me>
+</div>
+<div id="dpck" class="dpPreview">
+    <div class="dpc">Check before Uploading</div>
+<img [src]="url" height="250px" width="250px">
+<div class="upbtn">
+    <button style="margin-right: 5px;" (click)="uploaddp()" mat-flat-button color="accent">Upload</button>
+    <button (click)="back()" mat-flat-button color="accent">Back</button>
+</div>
 </div>

@@ -20,6 +20,7 @@ import { MatChipsModule } from '@angular/material/chips';
 import { AuthGuard } from './auth.guard';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatButtonModule } from '@angular/material/button';
 
 import { SignLogComponent } from './sign-log/sign-log.component';
 import { HomePageComponent } from './home-page/home-page.component';
@@ -32,6 +33,7 @@ import { MessagingPageComponent } from './messaging-page/messaging-page.componen
 import { DevOwnerPageComponent } from './dev-owner-page/dev-owner-page.component';
 import { CompanyPortalComponent } from './company-portal/company-portal.component'; 
 import { ConnectionServiceService } from './connection-service.service';
+import { MessageServiceService } from './message-service.service';
 import { TokenInterceptorService } from './token-interceptor.service';
 import { HeaderCComponent } from './header-c/header-c.component';
 import { CManageComponent } from './c-manage/c-manage.component';
@@ -84,6 +86,7 @@ import { JobpageComponent } from './jobpage/jobpage.component';
     MatDividerModule,
     MatInputModule,
     ReactiveFormsModule,
+    MatButtonModule,
     MatFormFieldModule,
     MatMenuModule,
     MatAutocompleteModule,
@@ -94,6 +97,7 @@ import { JobpageComponent } from './jobpage/jobpage.component';
   providers: [
     ConnectionServiceService,
     AuthGuard,
+    MessageServiceService,
     {
       provide:HTTP_INTERCEPTORS,
       useClass:TokenInterceptorService,

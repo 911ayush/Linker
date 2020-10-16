@@ -1,5 +1,7 @@
+<div>
+    <app-header-c></app-header-c>
+</div>
 
-<app-header-c></app-header-c>
 <div class="net-main">
     <div class="container">
         <div class="top">
@@ -7,7 +9,7 @@
         </div>
         <mat-divider></mat-divider>
         <div class="noification1y1">
-            <div class="notification" *ngFor="let notif of notifications">
+            <div class="notification" *ngFor="let notif of pending">
                 <span routerLink="/dev/:id">{{notif.name}}</span>
             </div>
         </div>
@@ -18,7 +20,7 @@
         </div>
         <mat-divider></mat-divider>
         <div class="noification1y1">
-            <div class="notification" *ngFor="let notif of notifications">
+            <div class="notification" *ngFor="let notif of sent">
                 <span routerLink="/dev/:id">{{notif.name}}</span>
             </div>
         </div>

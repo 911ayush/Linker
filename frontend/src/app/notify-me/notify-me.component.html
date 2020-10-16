@@ -4,5 +4,8 @@
             <mat-icon  aria-hidden="true" aria-label="home">notifications_active</mat-icon>
             <span>Notifications</span>
         </div>
+        <div class="notification" *ngFor="let notif of notifications">
+            <span routerLink="/dev/:id">{{notif.name}}</span>
+        </div>
     </div>
 </div>

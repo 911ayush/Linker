@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {CdkDragDrop, moveItemInArray, transferArrayItem} from '@angular/cdk/drag-drop';
-
+import { ConnectionServiceService } from '../connection-service.service';
 
 @Component({
   selector: 'app-company-portal',
@@ -9,16 +9,26 @@ import {CdkDragDrop, moveItemInArray, transferArrayItem} from '@angular/cdk/drag
 })
 export class CompanyPortalComponent implements OnInit {
 
-  name="Microsoft";
-  about="We hire the best ppl in the business";
-  skills:string[]=['Web Developer ','Frontend Developer','Web Developer ','Frontend Developer'];
+  name="";
+  about="";
+  location="";
+  skills:string[]=[];
   skill(event: CdkDragDrop<string[]>) {
     moveItemInArray(this.skills, event.previousIndex, event.currentIndex);
   }
-  location="Amrica di gali me"
-  constructor() { }
+  
+  constructor(private connectionService:ConnectionServiceService) { }
 
   ngOnInit(): void {
+    this.fetchData();
   }
-
+  fetchData(){
+    this.connectionService.getprofile(5).subscribe((data) => {
+      console.log(data);
+      this.about = data.about;
+      this.name = data.name;
+      this.location = data.location;
+      this.skills = data.skill;
+    });
+  }
 }

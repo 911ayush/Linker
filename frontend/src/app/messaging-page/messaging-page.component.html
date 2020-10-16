@@ -1,4 +1,4 @@
-<div class="div-header">
+<div>
     <app-header></app-header>
 </div>
 <div class="message-body">
@@ -61,7 +61,8 @@
             </div>
             <div class="create-message">
                 <div class="write-message">
-                    <textarea (keydown.enter)="sendMessage()" class="messa" row="2" placeholder="write here...."></textarea>
+                    <input [(ngModel)]="from" placeholder="name"/>
+                    <textarea (keydown.enter)="sendMessage()" [(ngModel)]="message" class="messa" placeholder="write here...."></textarea>
                 </div>
                 <mat-icon (click)="sendMessage()" class="send-icon" aria-hidden="false" aria-label="people">near_me</mat-icon>
             </div>
@@ -70,7 +71,7 @@
     <notify-me>
     
     </notify-me>
-    
+    <button (click)="callFn()"></button>
 </div>
 
       
