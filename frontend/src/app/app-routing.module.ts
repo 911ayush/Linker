@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { SignLogComponent } from './sign-log/sign-log.component';
-import { HomePageComponent } from './home-page/home-page.component'; 
-import { SignLogCompanyComponent } from './sign-log-company/sign-log-company.component'; 
+import { HomePageComponent } from './home-page/home-page.component';
+import { SignLogCompanyComponent } from './sign-log-company/sign-log-company.component';
 import { FeedComponent } from './feed/feed.component';
 import { MessagingPageComponent } from './messaging-page/messaging-page.component';
 import { DevOwnerPageComponent } from './dev-owner-page/dev-owner-page.component';
@@ -32,7 +32,7 @@ const routes: Routes = [
   { path: 'company/:id/message' , component: MessaginCComponent,canActivate:[AuthGuard]},
   { path: 'company/:id/network' , component: CNetworkComponent,canActivate:[AuthGuard]},
   { path: 'company/:id/manage', component:CManageComponent,canActivate:[AuthGuard]},
-  { path: 'company/:id/cnotification' , component: CnotificationPageComponent,canActivate:[AuthGuard]},
+  { path: 'company/:id/notification' , component: CnotificationPageComponent,canActivate:[AuthGuard]},
   { path: 'dev/:id', component:DevOwnerPageComponent,canActivate:[AuthGuard]},
   { path: '**', redirectTo:'/', pathMatch:"full"}
 ];
