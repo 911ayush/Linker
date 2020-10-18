@@ -4,6 +4,7 @@
    const bcrypt= require('bcryptjs')
  const jwt= require('jsonwebtoken')
 
+
   const  devSchema= new mongoose.Schema({
          email:{
                type: String,
@@ -37,7 +38,6 @@
    })
    devSchema.statics.findByCredentials= async(email,pass)=>{
            const dev= await Dev.findOne({email})
-        console.log(dev)
           if(! dev) {
                throw new Error('No Match Found Please Sign Up')
           }
@@ -50,7 +50,7 @@
 
    devSchema.methods.generateToken= async function (){
        const dev= this
-        const devToken=await jwt.sign({_id: dev._id.toString()},'iamdeveloper',{expiresIn: '2 Days'})
+        const devToken=await jwt.sign({_id: this._id.toString()},'iamdeveloper',{expiresIn: '2 Days'})
            dev.tokens.push({token: devToken})
          await dev.save()
        return devToken
