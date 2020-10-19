@@ -48,9 +48,6 @@ export class FeedComponent implements OnInit {
     }
 
   }
-  showcaption(){
-    alert(this.caption);
-  }
   uploaddp(){
     const formData = new FormData();
     formData.append('file',this.image);

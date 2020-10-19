@@ -5,15 +5,19 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class ConnectionServiceService {
-  private url = "http://localhost:4000/";
+  private url = "http://localhost:3001/";
   constructor(private http: HttpClient) {}
     registerUser(user){
       console.log(user);
-      return this.http.post<any>(`${this.url}api/rgister` ,user);
+      //return this.http.get<any>("http://localhost:3001/api");
+
+      return this.http.post<any>(`${this.url}devg/signup` ,user);
     }
     loginUser(user){
-      console.log(user);
-      return this.http.post<any>(`${this.url}api/rgister` ,user);
+       console.log(user);
+      // return this.http.post<any>(`${this.url}devg/login` ,JSON.stringify(user));
+      return this.http.post<any>(`${this.url}devg/login` ,user);
+      //return this.http.get<any>(`${this.url}devg/login`);
     }
     loggedIn(){
       return !!localStorage.getItem('token');

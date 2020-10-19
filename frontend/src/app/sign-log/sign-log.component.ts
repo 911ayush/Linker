@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { SocialAuthService } from "angularx-social-login";
 import { GoogleLoginProvider } from "angularx-social-login";
 import { ConnectionServiceService } from "../connection-service.service";
+import { Router} from '@angular/router'; 
 // import { NgModule } from '@angular/core';
 // import { FormGroup, FormControl, Validators } from '@angular/forms';
 @Component({
@@ -14,7 +15,7 @@ export class SignLogComponent{
   registerUserData:any={};
   loginUserData:any= {};
 
-  constructor(private socualAuthService: SocialAuthService,private authService: ConnectionServiceService) { }
+  constructor(private socualAuthService: SocialAuthService,private router: Router,private authService: ConnectionServiceService) { }
   signInWithGoogle(): void {
     this.socualAuthService.signIn(GoogleLoginProvider.PROVIDER_ID);
   }
@@ -23,21 +24,29 @@ export class SignLogComponent{
   }
  
   logIn(){
-    this.authService.loginUser(this.registerUserData)
+    alert("yoo");
+    this.authService.loginUser(this.loginUserData)
       .subscribe(
         res => {
+          alert("yupp");
           console.log(res);
-          localStorage.setItem('token',res.token);
+          localStorage.setItem('token',res.logToken);
+          this.router.navigate(['/dev/feed'])
         },
         err => console.log(err)
       );
   }
   signUp(){
-    this.authService.registerUser(this.registerUserData)
+    if(this.registerUserData.password === this.registerUserData.confirmPassword){
+      this.authService.registerUser(this.registerUserData)
     .subscribe(
       res => console.log(res),
       err => console.log(err)
     );
+    }
+    else{
+      alert("not same");
+    }
   }
   headTologForm(){
    
