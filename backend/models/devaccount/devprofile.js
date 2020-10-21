@@ -9,6 +9,10 @@
         trim: true,
 
     },
+      address:{
+         type: String,
+          trim: true
+      },
     about:{
        type: String,
       trim: true,
@@ -31,6 +35,12 @@
       }
     },{
     timestamps: true
+  })
+
+  devpSchema.virtual('jobs',{
+         ref:  'Job',
+         localField: '_id',
+          foreignField: 'audiences.audience'
   })
 
 

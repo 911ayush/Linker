@@ -13,7 +13,7 @@ const dauth=  require('../authentication/dauth')
           res.status(500).send()
       }
  })
-  router.post('/devg/login',dauth,async(req,res)=>{
+  router.post('/devg/login',async(req,res)=>{
     const dev= await Dev.findByCredentials(req.body.email,req.body.password)
        try{
            if(!dev){

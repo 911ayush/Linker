@@ -120,6 +120,26 @@ const  Devprofile= require('../../models/devaccount/devprofile')
 
 // Update User Profile Option
 
+ router.patch('/devproute/update',dauth,async (req,res)=>{
+     const updateWant= ['name','about','address','skills']
+     const updateReceived=  Object.keys(req.body)
+     const isValid=  updateReceived.every((update)=>updateWant.includes(update))
+     if(! isValid) {
+         return res.status(400).send('Please send request for proper updative fields')
+     }
+     try{
+         const   devprofile= await  Devprofile.findOne({owner: req.user._id})
+         updateReceived.forEach((update)=>{
+             devprofile[update]=  req.body[update]
+         })
+         await devprofile.save()
+         res.status(200).send(devprofile)
+     }
+     catch(e){
+         res.status(404).send(e)
+     }
+ })
+
 
 
 
