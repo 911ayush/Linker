@@ -64,6 +64,19 @@ const  Devprofile= require('../../models/devaccount/devprofile')
                res.status(400).send(e)
        }
  })
+   router.get('/devprofile/myavatar',dauth,async(req,res)=>{
+       try{
+       const devprofile = await Devprofile.findOne({owner: req.user._id})
+       if(!devprofile || ! devprofile.avatar) {
+           return res.status(400).send('Hey there are no content for you')
+       }
+       res.set('Content-Type','image/png')
+       res.status(200).send(devprofile.avatar)
+   }
+catch(e){
+    res.status(400).send(e)
+}
+   })
    router.delete('/devprofile/finish/avatar',dauth,async(req,res)=>{
        try {
            const devprofile = await Devprofile.findOne({owner: req.user._id})

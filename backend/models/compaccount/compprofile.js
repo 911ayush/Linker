@@ -27,7 +27,11 @@ const comppSchema= new mongoose.Schema({
            type: mongoose.Schema.Types.ObjectID,
            required: true,
            ref: 'Comp'
-       }
+       },
+    subscriber:{
+             type: mongoose.Schema.Types.ObjectID,
+            ref: 'Dev'
+      }
 },{
      timestamps: true
 })

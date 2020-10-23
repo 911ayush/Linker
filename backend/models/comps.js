@@ -33,6 +33,11 @@ const  compSchema= new mongoose.Schema({
           trim: true,
           maxlength: 21,
      },
+    postcode: {
+        type: Number,
+        trim: true,
+        maxlength: 10,
+    },
     password: {
         type: String,
         required: true,

@@ -1,9 +1,10 @@
 const  Job= require('../../models/jobs/job')
     const express= require('express')
  const dauth= require('../../authentication/dauth')
-const devProfile= require('../../models/devaccount/devprofile)
+ // const devProfile= require('../../models/devaccount/devprofile)
 const router= new  express.Router()
  // Subscribed Jobs
+
    router.get('/devjobs',dauth,async(req,res)=>{
                      const  devprofile = await devProfile.findById(req.user._id)
         if(!devprofile){
@@ -43,17 +44,24 @@ const router= new  express.Router()
               res.status(400).send(e)
         }
    })
+
 // here id is Job Id
  router.get('/devjobs/:id/apply',dauth,async(req,res)=>{
                const jobId=   req.params.id
-            const job=  await Job.findById(jobId)
       try {
+          const job = await Job.findById(jobId)
           if (!job) {
-              return res.status(400).send('There is no job here releating with this job')
+              return res.status(400).send('There is no job here releating with this id')
           }
-          catch(e){
-                res.status(404).send(e)
-          }
+          // Please Disable apply button after it
+          // Lot work on it
+       const status =await  job.checkDeadline()
+            await job.checkAndSave(req.user._id)
+          res.status(200).send('You have applied Successfully')
       }
-
+          catch(e){
+                res.status(404).send({ error: e.toString()})
+          }
  })
+
+ module.exports= router

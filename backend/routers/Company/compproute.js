@@ -1,6 +1,7 @@
   const CompProfile= require('../../models/compaccount/compprofile')
     const express= require('express')
    const router= new express.Router()
+  const request= require('request')
    const cauth= require('../../authentication/cauth')
 
      router.patch('/compprofile/update',cauth,async(req,res)=>{
@@ -22,9 +23,20 @@
                res.status(404).send(e)
            }
      })
+  // test things correctly
+  //   router.get('/testee',async (req,res)=>{
+  //           request({
+  //                url:'http://localhost:3001/compprofile/read',
+  //                json
+  //           },(error,resp)=>{
+  //                    res.send(resp)
+  //
+  //          })
+  // })
 
   router.get('/compprofile/read',cauth,async(req,res)=>{
        try {
+
            const compprofile = await CompProfile.findOne({owner: req.user._id})
            res.status(200).send(compprofile)
        }catch(e){

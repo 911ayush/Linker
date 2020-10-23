@@ -3,6 +3,7 @@ const jwt= require('jsonwebtoken')
 
 const cauth= (async(req,res,next)=>{
     try {
+
         const token = req.header('Authorization').replace('Bearer ', '')
         const isIndeed=  jwt.verify(token, 'iamcompany')
         const user=  await Comp.findOne({_id: isIndeed._id, 'tokens.token': token })
