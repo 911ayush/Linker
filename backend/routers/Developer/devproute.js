@@ -53,7 +53,7 @@ const  Devprofile= require('../../models/devaccount/devprofile')
  router.get('/devprofile/:id/avatar',dauth,async(req,res)=>{
        try {
            const devId = req.params.id
-           const devprofile = await Devprofile.findById(devId)
+           const devprofile = await Devprofile.findById({owner: devId})
             if(!devprofile || ! devprofile.avatar) {
                   return res.status(400).send('Hey there are no content for you')
             }
@@ -113,9 +113,8 @@ catch(e){
 
          router.get('/devprofile/:id/read',dauth,async (req,res)=>{
                         const devId=  req.params.id
-                   console.log(devId)
         try {
-            const devprofile =await  Devprofile.findById(devId)
+            const devprofile =await  Devprofile.findById({owner: devId})
             console.log(devprofile)
             if (!devprofile) {
                 res.send(new Error('User not found'))
