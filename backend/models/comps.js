@@ -3,6 +3,7 @@ require('../db/connect')
 const validator= require('validator')
 const bcrypt= require('bcryptjs')
 const jwt= require('jsonwebtoken')
+ const Job= require('../models/jobs/job')
 
 
 const  compSchema= new mongoose.Schema({
@@ -83,6 +84,12 @@ compSchema.methods.toJSON=  function(){
     delete compObject.password
     return compObject
 }
+
+  compSchema.virtual('jobs',{
+         ref: 'Job',
+         localField:'_id',
+          foreignField: 'owner'
+  })
 
 
 

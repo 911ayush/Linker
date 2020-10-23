@@ -21,12 +21,126 @@ const Job= require('../../models/jobs/job')
                     res.status(404).send(e)
                }
  })
+// Use Params for query string in postman
+// apply asec if want to find job filter with early created
+// apply desc in query if want to find job status crated latest
+
+     router.get('/compjob/status/all',cauth,async (req,res)=> {
+         const sort = {}
+         if (req.query.sortBy) {
+             const element = req.query.sortBy.split('_')
+             const final = element[0] + '.start'
+             sort[final] = element[1] === 'desc' ? -1 : 1
+         }
+         try {
+             await req.user.populate({
+                 path: 'jobs',
+                 options: {
+                     sort
+                 }
+             }).execPopulate()
+             const allJob = req.user.jobs
+                 res.status(200).send(allJob)
+         }
+         catch(e){
+                 res.status(404).send({error: e.toString()})
+         }
+      })
+
+  // Company Internal section
+// Use Params for query string in postman
+// apply asec if want to find job filter with early created
+// apply desc in query if want to find job status crated latest
+// Isme Third Party error aayega abhi kyonki ye free api se hai baaki code sahi hai to ek second main keval ek query bhejta hai
+router.get('/compjob/status/ongoing',cauth,async (req,res)=>{
+       const sort={}
+         if(req.query.sortBy){
+                const element=  req.query.sortBy.split('_')
+                const final= element[0]+ '.start'
+                sort[final] = element[1]==='desc' ? -1: 1
+         }
+       try{
+            await  req.user.populate({
+               path: 'jobs',
+                options: {
+                   sort
+                }
+            }).execPopulate()
+           const allJob= req.user.jobs
+               const  jobOngoing=[]
+                   allJob.forEach( async(job)=>{
+                            try{
+                                 await job.checkDeadline()
+                                jobOngoing.push(job)
+                            }
+                            catch(e){
+                                   console.log('Passed Job',e.toString())
+                            }
+                   })
+            res.status(200).send(jobOngoing)
+       }
+       catch(e){
+            console.log(e)
+       }
+  })
+ router.get('/compjob/status/closed',cauth,async(req,res)=>{
+     console.log('Received')
+     const sort={}
+     if(req.query.sortBy) {
+    const element=  req.query.sortBy.split('_')
+    const final= element[0]+ '.start'
+    sort[final] = element[1]==='desc' ? -1: 1
+   }
+      try{
+    await  req.user.populate({
+        path: 'jobs',
+        options: {
+            sort
+        }
+    }).execPopulate()
+          const allJob= req.user.jobs
+          const  jobClosed=[]
+          allJob.forEach( async(job)=>{
+              try{
+                  await job.checkDeadline()
+              }
+              catch(e){
+                    if(e.toString()==='Error: Registration has close now') {
+                        jobClosed.push(job)
+                    }
+                }
+              })
+
+       res.status(200).send(jobClosed)
+   }
+   catch(e){
+       res.status(404).send({error: e.toString()})
+     }
+ })
 
 
 
 
 
 
+
+
+
+
+// const sort={}
+// if(req.query.sortBy){
+//     const element=  req.query.sortBy.split('_')
+//     const final= element[0]+ '.start'
+//     sort[final] = element[1]==='desc' ? -1: 1
+// }
+// try{
+//     await  req.user.populate({
+//         path: 'jobs',
+//         options: {
+//             sort
+//         }
+//     }).execPopulate()
+//     const allJob= req.user.jobs
 
 
 
