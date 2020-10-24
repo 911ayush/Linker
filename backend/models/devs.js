@@ -3,6 +3,7 @@
    const validator= require('validator')
    const bcrypt= require('bcryptjs')
  const jwt= require('jsonwebtoken')
+      const Job=  require('../models/jobs/job')
 
 
   const  devSchema= new mongoose.Schema({
@@ -63,14 +64,7 @@
         delete devObject.password
         return devObject
    }
-
-
-
-
-
-
-
-  devSchema.pre('save',async function(next){
+   devSchema.pre('save',async function(next){
         const dev= this
        if(dev.isModified) {
            const hashedPass =  await bcrypt.hash(dev.password, 8)
@@ -79,6 +73,17 @@
             next()
        }
   })
+   devSchema.virtual('djobs',{
+                  ref: 'Job',
+                  localField: '_id',
+                  foreignField: 'subscribers.subscriber'
+   })
+
+ devSchema.virtual('dappliedJobs',{
+          ref:'Job',
+         localField: '_id',
+         foreignField: 'applicants.applicant'
+ })
 
  const Dev= mongoose.model('Dev',devSchema)
     module.exports= Dev

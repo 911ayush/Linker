@@ -17,8 +17,10 @@ const cauth= (async(req,res,next)=>{
         next()
     }
     catch(e){
+
         res.status(404).send()
     }
+
 })
 
 module.exports= cauth

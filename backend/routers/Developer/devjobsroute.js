@@ -1,48 +1,47 @@
 const  Job= require('../../models/jobs/job')
     const express= require('express')
  const dauth= require('../../authentication/dauth')
- // const devProfile= require('../../models/devaccount/devprofile)
+  const   Dev= require('../../models/devs')
 const router= new  express.Router()
  // Subscribed Jobs
-
+   // Please apply filter
+// end_asec for those which are ending soon
+// asec for normal order who have published as order
+//
    router.get('/devjobs',dauth,async(req,res)=>{
-                     const  devprofile = await devProfile.findById(req.user._id)
-        if(!devprofile){
-             return res.status(400).send('Please Fill your  Profile First')
-        }
+       const  sort= {}
+       if (req.query.sortBy) {
+           const element = req.query.sortBy.split('_')
+           const final = element[0] + '.' + element[1]
+           sort[final] = element[2] === 'desc' ? -1 : 1
+       }
        try{
-           await  devprofile.populate('jobs').execPopulate()
-            if(! devprofile.jobs){
+           await  req.user.populate({
+                path: 'djobs',
+                 options: {
+                        sort
+                }
+           }).execPopulate()
+            const jobs= req.user.djobs
+           if(! jobs.length ){
                  return  res.status(404).send(' Nothing to show Please subscribe some companies')
             }
-             res.status(200).send(devprofile.jobs)
+             res.status(200).send(jobs)
        }
        catch(e){
               res.status(400).send(e)
        }
    })
 
-
    router.get('/devjobs/applied',dauth,async(req,res)=>{
-       const  devprofile = await devProfile.findById(req.user._id)
-       if(!devprofile){
-           return res.status(400).send('Please Fill your  Profile First')
-       }
-        try{
-             await  devprofile.populate({
-                 path:'jobs',
-                 match:{
-                      'applicants.dev':  devprofile._id
-                 }
-             }).execPopulate()
-            if(! devprofile.jobs){
-                  return res.status(404).send('You have not applied for any job yet')
-            }
-               res.status(202).send(devprofile.jobs)
-        }
-        catch(e){
-              res.status(400).send(e)
-        }
+           try{
+                  await    req.user.populate('daplliedJobs').execPopulate()
+                 const allJob= req.user.dappliedJobs
+                       res.status(200).send(allJob)
+           }
+           catch(e){
+                 res.status(404).send()
+           }
    })
 
 // here id is Job Id

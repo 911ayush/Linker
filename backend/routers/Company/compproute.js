@@ -3,8 +3,13 @@
    const router= new express.Router()
   const request= require('request')
    const cauth= require('../../authentication/cauth')
+  const dauth= require('../../authentication/dauth')
+  const cdauth= require('../../authentication/cdauth')
 
-     router.patch('/compprofile/update',cauth,async(req,res)=>{
+
+
+
+  router.patch('/compprofile/update',cauth,async(req,res)=>{
                 const updateWant= ['about','lookup','address']
            const updateReceived=  Object.keys(req.body)
              const isValid=  updateReceived.every((update)=>updateWant.includes(update))
@@ -47,11 +52,10 @@
   // This is for who they can not see the company profile in restricted manner
   // Aage information jod ke modified karnge
 
-   router.get('/compprofile/:id/read_only',cauth,async (req,res)=>{
+   router.get('/compprofile/:id/read_only',cdauth,async(req,res)=>{
            const  compId= req.params.id
-       console.log(compId)
         try {
-            const compprofile = await CompProfile.findById(compId)
+            const compprofile = await CompProfile.findOne({owner:compId})
             if (!compprofile) {
                 return res.status(404).send('Could not find')
             }
@@ -62,6 +66,27 @@
         }
    })
 
+  router.get('/compprofile/:id/subscribe',dauth,async (req,res)=>{
+                  const compId=  req.params.id
+               try {
+                   const compProfile = await CompProfile.findOne({owner: compId})
+                   if (!compProfile) {
+                       return res.status(200).send({error: 'No match found'})
+                   }
+
+                      const check= compProfile.subscribers.filter((sub)=> sub.subscriber.toString() == req.user._id)
+                     if(check.length !==0) {
+                           throw new Error('You have Subscribed earlier')
+                     }
+                       compProfile.subscribers.push({subscriber: req.user._id})
+                       await compProfile.save()
+                       res.status(200).send()
+                   }
+
+               catch(e){
+                         res.status(404).send({error: e.toString()})
+               }
+  })
 
 
   module.exports= router

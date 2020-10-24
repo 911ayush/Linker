@@ -3,17 +3,22 @@ const Job= require('../../models/jobs/job')
  const express= require('express')
  const router= new express.Router()
  const cauth=  require('../../authentication/cauth')
+const   CompProfile= require('../../models/compaccount/compprofile')
 
 
 
  router.post('/compjob/publish',cauth,async (req,res)=>{
      console.log(req.body)
+       const compProfile= await CompProfile.findOne({ owner: req.user._id})
+          const subscribers= compProfile.subscribers
+     console.log(compProfile)
                try {
                    const job = await new Job({
                            post: req.body.post,
                            createdBy: req.body.createdBy,
                            selectedRange: req.body.selectedRange,
-                           owner:  req.user._id
+                           owner:  req.user._id,
+                           subscribers
                    })
                    await job.save()
                    res.status(200).send('Job published Successfully')
@@ -29,8 +34,8 @@ const Job= require('../../models/jobs/job')
          const sort = {}
          if (req.query.sortBy) {
              const element = req.query.sortBy.split('_')
-             const final = element[0] + '.start'
-             sort[final] = element[1] === 'desc' ? -1 : 1
+             const final = element[0] + '.' + element[1]
+             sort[final] = element[2] === 'desc' ? -1 : 1
          }
          try {
              await req.user.populate({

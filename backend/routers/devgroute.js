@@ -9,8 +9,8 @@ const dauth=  require('../authentication/dauth')
             await dev.save()
          res.status(201).send()
       }
-      catch{
-          res.status(500).send()
+      catch(e){
+          res.status(500).send(e)
       }
  })
   router.post('/devg/login',async(req,res)=>{

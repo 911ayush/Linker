@@ -34,8 +34,8 @@ const fetch = require('node-fetch');
                      type: mongoose.Schema.Types.ObjectID,
                }
           }],
-       audiences: [{
-           audience: {
+       subscribers: [{
+           subscriber: {
                type: mongoose.Schema.Types.ObjectID,
            }
        }],
