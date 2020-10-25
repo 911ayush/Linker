@@ -20,9 +20,9 @@ router.post('/compg/signup',async(req,res)=>{
     }
 })
 router.post('/compg/login',async(req,res)=>{
-    const comp= await Comp.findByCredentials(req.body.email,req.body.password)
     try{
-        if(!comp){
+    const comp= await Comp.findByCredentials(req.body.email,req.body.password)
+    if(!comp){
             res.status(406).send('Either password Or Email is not matched')
         }
         const logToken= await comp.generateToken()

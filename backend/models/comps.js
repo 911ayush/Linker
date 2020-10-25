@@ -62,7 +62,7 @@ compSchema.statics.findByCredentials= async(email,pass)=>{
     if(! comp) {
         throw new Error('No Match Found Please Sign Up')
     }
-    const isMatched= bcrypt.compare(pass,comp.password)
+    const isMatched= bcrypt.compareSync(pass,comp.password)
     if(! isMatched) {
         throw new Error(' Password is Defected')
     }

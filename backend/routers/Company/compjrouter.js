@@ -16,6 +16,8 @@ const   CompProfile= require('../../models/compaccount/compprofile')
                    const job = await new Job({
                            post: req.body.post,
                            createdBy: req.body.createdBy,
+                           description: req.body.description,
+                           recommendation: req.body.recommendation,
                            selectedRange: req.body.selectedRange,
                            owner:  req.user._id,
                            subscribers
@@ -73,15 +75,11 @@ router.get('/compjob/status/ongoing',cauth,async (req,res)=>{
             }).execPopulate()
            const allJob= req.user.jobs
                const  jobOngoing=[]
-                   allJob.forEach( async(job)=>{
-                            try{
-                                 await job.checkDeadline()
-                                jobOngoing.push(job)
-                            }
-                            catch(e){
-                                   console.log('Passed Job',e.toString())
-                            }
-                   })
+
+            for( let job of allJob){
+                    await  job.checkDeadline()
+                   jobOngoing.push(job)
+            }
             res.status(200).send(jobOngoing)
        }
        catch(e){
@@ -105,18 +103,17 @@ router.get('/compjob/status/ongoing',cauth,async (req,res)=>{
     }).execPopulate()
           const allJob= req.user.jobs
           const  jobClosed=[]
-          allJob.forEach( async(job)=>{
-              try{
-                  await job.checkDeadline()
-              }
-              catch(e){
-                    if(e.toString()==='Error: Registration has close now') {
-                        jobClosed.push(job)
-                    }
-                }
-              })
-
-       res.status(200).send(jobClosed)
+             for(let job of allJob){
+                  try {
+                      await job.checkDeadline()
+                  }
+                  catch(e){
+                       if(e.toString()==='Error: Registration has close now'){
+                            jobClosed.push(job)
+                       }
+                  }
+             }
+             res.status(200).send(jobClosed)
    }
    catch(e){
        res.status(404).send({error: e.toString()})

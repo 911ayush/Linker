@@ -14,8 +14,9 @@ const dauth=  require('../authentication/dauth')
       }
  })
   router.post('/devg/login',async(req,res)=>{
+      try{
     const dev= await Dev.findByCredentials(req.body.email,req.body.password)
-       try{
+
            if(!dev){
                  res.status(406).send('Either password Or Email is not matched')
            }
@@ -23,7 +24,7 @@ const dauth=  require('../authentication/dauth')
              res.status(201).send({dev,logToken})
     }
     catch(e) {
-          res.status(400).send(e)
+          res.status(400).send({error : e.toString()})
     }
   })
    router.get('/devg',dauth,(req,res)=>{

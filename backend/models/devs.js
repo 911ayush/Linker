@@ -42,7 +42,7 @@
           if(! dev) {
                throw new Error('No Match Found Please Sign Up')
           }
-          const isMatched= bcrypt.compare(pass,dev.password)
+          const isMatched= bcrypt.compareSync(pass,dev.password)
         if(! isMatched) {
                 throw new Error(' Password is Defected')
         }
@@ -67,7 +67,7 @@
    devSchema.pre('save',async function(next){
         const dev= this
        if(dev.isModified) {
-           const hashedPass =  await bcrypt.hash(dev.password, 8)
+           const hashedPass =  await bcrypt.hashSync(dev.password, 2)
              dev.password= hashedPass
            console.log(hashedPass)
             next()

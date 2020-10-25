@@ -19,14 +19,22 @@ const fetch = require('node-fetch');
                required: true,
              trim: true,
        },
-       selectedRange: {   start:
+         description: {
+             type: String,
+                 trim: true
+       },
+       recommended: [{
+               type: String,
+               trim: true
+       }],
+      selectedRange: {   start:
                { type: Date,
                  req: true
            },
            end: {
              type: Date,
                req: true
-           }
+      }
 
        },
        applicants: [{
