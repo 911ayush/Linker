@@ -17,7 +17,7 @@ const   CompProfile= require('../../models/compaccount/compprofile')
                            post: req.body.post,
                            createdBy: req.body.createdBy,
                            description: req.body.description,
-                           recommendation: req.body.recommendation,
+                           recommended: req.body.recommendation,
                            selectedRange: req.body.selectedRange,
                            owner:  req.user._id,
                            subscribers

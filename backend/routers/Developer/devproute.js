@@ -152,6 +152,32 @@ catch(e){
      }
  })
 
+// Follow me
+    router.get('/devproute/:id/subscribe',dauth,async (req,res)=>{
+    const  devId=  req.params.id
+    try {
+        const  devProfile = await Devprofile.findOne({owner: devId})
+        if (! devProfile) {
+            return res.status(404).send({error: 'No match found'})
+        }
+
+        const check= devProfile.subscribers.filter((sub)=> sub.subscriber.toString() == req.user._id)
+        if(check.length !==0) {
+            throw new Error('You have Subscribed earlier')
+        }
+        devProfile.subscribers.push({subscriber: req.user._id})
+        // Field for furue
+
+        await devProfile.save()
+        res.status(200).send()
+    }
+
+    catch(e){
+        res.status(404).send({error: e.toString()})
+    }
+})
+
+
 
 
 

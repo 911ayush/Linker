@@ -1,7 +1,7 @@
  require('../../db/connect')
  const mongoose= require('mongoose')
 
-
+//  Developer Subscriber  means follower
   const devpSchema= new mongoose.Schema({
     name: {
         type: String,
@@ -32,7 +32,12 @@
     },
       avatar: {
           type: Buffer
-      }
+      },
+       subscribers: [{
+                subscriber:{
+                     type: mongoose.Schema.Types.ObjectID
+                }
+       }]
     },{
     timestamps: true
   })

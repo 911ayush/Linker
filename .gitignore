@@ -1,3 +1,5 @@
 backend/node_modules/
 frontend/
 .idea/
+chat-app/node_modules/
+messaging/

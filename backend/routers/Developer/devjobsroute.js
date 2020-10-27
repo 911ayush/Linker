@@ -35,7 +35,7 @@ const router= new  express.Router()
 
    router.get('/devjobs/applied',dauth,async(req,res)=>{
            try{
-                  await    req.user.populate('daplliedJobs').execPopulate()
+                  await    req.user.populate('dappliedJobs').execPopulate()
                  const allJob= req.user.dappliedJobs
                        res.status(200).send(allJob)
            }

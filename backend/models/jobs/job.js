@@ -40,6 +40,7 @@ const fetch = require('node-fetch');
        applicants: [{
                dev: {
                      type: mongoose.Schema.Types.ObjectID,
+                     ref:'Dev'
                }
           }],
        subscribers: [{

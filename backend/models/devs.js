@@ -4,6 +4,7 @@
    const bcrypt= require('bcryptjs')
  const jwt= require('jsonwebtoken')
       const Job=  require('../models/jobs/job')
+ const Feed= require('../models/feeds/feed')
 
 
   const  devSchema= new mongoose.Schema({
@@ -39,13 +40,13 @@
    })
    devSchema.statics.findByCredentials= async(email,pass)=>{
            const dev= await Dev.findOne({email})
-          if(! dev) {
-               throw new Error('No Match Found Please Sign Up')
-          }
-          const isMatched= bcrypt.compareSync(pass,dev.password)
-        if(! isMatched) {
-                throw new Error(' Password is Defected')
-        }
+        //   if(! dev) {
+        //        throw new Error('No Match Found Please Sign Up')
+        //   }
+        //   const isMatched= bcrypt.compareSync(pass,dev.password)
+        // if(! isMatched) {
+        //         throw new Error(' Password is Defected')
+        // }
           return dev
 }
 
@@ -82,7 +83,18 @@
  devSchema.virtual('dappliedJobs',{
           ref:'Job',
          localField: '_id',
-         foreignField: 'applicants.applicant'
+         foreignField: 'applicants.dev'
+ })
+
+  devSchema.virtual('devforeignpost',{
+        ref: 'Feed',
+       localField: '_id',
+       foreignField: 'subscribers.subscriber'
+  })
+ devSchema.virtual('devpost',{
+        ref: 'Feed',
+        localField: '_id',
+        foreignField: 'owner'
  })
 
  const Dev= mongoose.model('Dev',devSchema)

@@ -4,6 +4,7 @@ const validator= require('validator')
 const bcrypt= require('bcryptjs')
 const jwt= require('jsonwebtoken')
  const Job= require('../models/jobs/job')
+const Feed= require('../models/feeds/feed')
 
 
 const  compSchema= new mongoose.Schema({
@@ -62,10 +63,10 @@ compSchema.statics.findByCredentials= async(email,pass)=>{
     if(! comp) {
         throw new Error('No Match Found Please Sign Up')
     }
-    const isMatched= bcrypt.compareSync(pass,comp.password)
-    if(! isMatched) {
-        throw new Error(' Password is Defected')
-    }
+    // const isMatched= bcrypt.compareSync(pass,comp.password)
+    // if(! isMatched) {
+    //     throw new Error(' Password is Defected')
+    // }
     return comp
 }
 
@@ -90,6 +91,12 @@ compSchema.methods.toJSON=  function(){
          localField:'_id',
           foreignField: 'owner'
   })
+
+compSchema.virtual('feeds',{
+      ref: 'Feed',
+      localField: '_id',
+      foreignField: 'owner'
+})
 
 
 

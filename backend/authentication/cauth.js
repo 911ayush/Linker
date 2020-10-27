@@ -2,8 +2,8 @@ const Comp= require('../models/comps')
 const jwt= require('jsonwebtoken')
 
 const cauth= (async(req,res,next)=>{
+     console.log('Incoming')
     try {
-
         const token = req.header('Authorization').replace('Bearer ', '')
         const isIndeed=  jwt.verify(token, 'iamcompany')
         const user=  await Comp.findOne({_id: isIndeed._id, 'tokens.token': token })
@@ -14,6 +14,7 @@ const cauth= (async(req,res,next)=>{
         }
         req.user= user
         req.token= token
+        console.log('Outgoing')
         next()
     }
     catch(e){

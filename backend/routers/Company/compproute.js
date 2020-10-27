@@ -79,7 +79,9 @@
                            throw new Error('You have Subscribed earlier')
                      }
                        compProfile.subscribers.push({subscriber: req.user._id})
-                       await compProfile.save()
+              // Field for furue
+
+                   await compProfile.save()
                        res.status(200).send()
                    }
 
