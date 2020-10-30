@@ -10,8 +10,12 @@ const fetchComp= require('../routers/fetchcompanies')
 const feedComp= require('../routers/Company/compfeedrouter')
 const feedDev= require('../routers/Developer/devfeedrouter')
 const likePost= require('../routers/likepostroute')
+const compNotiRouter= require('../routers/Company/compnotirouter')
 const app= express()
    app.use(express.json())
+const path= require('path')
+const publicDirectoryPath = path.join(__dirname, '../public')
+app.use(express.static(publicDirectoryPath))
 
     app.get('/',async(req,res)=>{
              res.send('Hello Server is ready to work')
@@ -27,4 +31,5 @@ app.use(fetchComp)
 app.use(feedComp)
 app.use(feedDev)
 app.use(likePost)
+app.use(compNotiRouter)
 module.exports= app

@@ -1,5 +1,6 @@
 const request = require('request')
-const coor= async function(city,callb){
+   const yargs= require('yargs')
+const coor=function(city,callb){
     const url1=`https://us1.locationiq.com/v1/search.php?key=b6de30700f13d4&q=${city}&format=json&limit=1`
     request({
         url:url1,
@@ -26,17 +27,17 @@ const coor= async function(city,callb){
 }
 const whether= function(latti,longitude,callba){
     const url=`http://api.weatherstack.com/current?access_key=2bb78cc513b4a65da92d5f2172a76b38&query=${latti},${longitude}`
-
-        request ({
-            url: url,
-            json: true
-        },(error,response)=>{
-            callba(response.body.location)
-        })
-
+    request ({
+        url: url,
+        json: true
+    },(error,response)=>{
+          callba(response.body.current)
+    })
 }
 
 
- module.exports= coor
+ module.exports={
+        fetchWether: coor,
+ }
 
 

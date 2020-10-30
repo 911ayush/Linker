@@ -33,4 +33,4 @@ router.post('/compg/login',async(req,res)=>{
     }
 })
 
-module.exports=  router
+  module.exports=  router

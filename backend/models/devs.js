@@ -1,11 +1,11 @@
  const mongoose= require('mongoose')
     require('../db/connect')
    const validator= require('validator')
-   const bcrypt= require('bcryptjs')
+ const passwordHash = require('password-hash');
  const jwt= require('jsonwebtoken')
       const Job=  require('../models/jobs/job')
  const Feed= require('../models/feeds/feed')
-
+ const Notification= require('../models/notification/notifi')
 
   const  devSchema= new mongoose.Schema({
          email:{
@@ -40,13 +40,18 @@
    })
    devSchema.statics.findByCredentials= async(email,pass)=>{
            const dev= await Dev.findOne({email})
-        //   if(! dev) {
-        //        throw new Error('No Match Found Please Sign Up')
-        //   }
-        //   const isMatched= bcrypt.compareSync(pass,dev.password)
-        // if(! isMatched) {
-        //         throw new Error(' Password is Defected')
-        // }
+          if(! dev) {
+               throw new Error('No Match Found Please Sign Up')
+          }
+       //    console.log('Match from here')
+       //    console.log(passwordHash.generate(pass) === 'sha1$fe41fb4b$1$806e0cbc5880dc1cd6ce56a25326144ba7c05032')
+       //  console.log(pass)
+       // console.log(passwordHash.generate(pass))
+       //
+       //   const isMatched = passwordHash.verify(pass, dev.password)
+       //  if(! isMatched) {
+       //          throw new Error(' Password is Defected')
+       //  }
           return dev
 }
 
@@ -68,7 +73,7 @@
    devSchema.pre('save',async function(next){
         const dev= this
        if(dev.isModified) {
-           const hashedPass =  await bcrypt.hashSync(dev.password, 2)
+           const hashedPass =  passwordHash.generate(dev.password);
              dev.password= hashedPass
            console.log(hashedPass)
             next()
@@ -96,6 +101,11 @@
         localField: '_id',
         foreignField: 'owner'
  })
+  devSchema.virtual('mynotifi',{
+        ref: 'Notification',
+        localField: '_id',
+         foreignField: 'subscribers.subscriber'
+  })
 
  const Dev= mongoose.model('Dev',devSchema)
-    module.exports= Dev
+    module.exports = Dev

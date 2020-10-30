@@ -1,6 +1,7 @@
 const express= require('express')
 const  Devprofile= require('../../models/devaccount/devprofile')
  const dauth= require('../../authentication/dauth')
+const cdauth= require('../../authentication/cdauth')
  const  router= new express.Router()
   const multer= require('multer')
  const sharp= require('sharp')
@@ -50,14 +51,13 @@ const  Devprofile= require('../../models/devaccount/devprofile')
 
 
  // Any one which is authenticate can see image
- router.get('/devprofile/:id/avatar',dauth,async(req,res)=>{
+ router.get('/devprofile/:id/avatar',cdauth,async(req,res)=>{
        try {
            const devId = req.params.id
            const devprofile = await Devprofile.findOne({owner: devId})
             if(!devprofile || ! devprofile.avatar) {
                   return res.status(400).send('Hey there are no content for you')
             }
-              res.set('Content-Type','image/png')
            res.status(200).send(devprofile.avatar)
        }
        catch(e){
@@ -70,8 +70,8 @@ const  Devprofile= require('../../models/devaccount/devprofile')
        if(!devprofile || ! devprofile.avatar) {
            return res.status(400).send('Hey there are no content for you')
        }
-       res.set('Content-Type','image/png')
-       res.status(200).send(devprofile.avatar)
+
+       res.status(200).send(devprofile.image)
    }
 catch(e){
     res.status(400).send(e)

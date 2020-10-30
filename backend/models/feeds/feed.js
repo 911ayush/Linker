@@ -22,7 +22,11 @@
      owner:{
               type: mongoose.Schema.Types.ObjectID,
               required: true
-     }
+     },
+      type: {
+              type: Boolean,
+              required: true
+      }
  },{
       timestamps: true
  })

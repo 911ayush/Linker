@@ -32,7 +32,10 @@ const comppSchema= new mongoose.Schema({
         subscriber: {
             type: mongoose.Schema.Types.ObjectID
         }
-    }]
+    }],
+    image:{
+           type:  Buffer
+    }
 },{
      timestamps: true
 })

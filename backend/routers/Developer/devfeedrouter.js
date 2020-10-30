@@ -23,30 +23,25 @@ const upload= multer({
 
 // Foreign Field
        router.get('/devfeed/foreign',dauth,async (req,res)=>{
-              try{
-                   await  req.user.populate({
-                       path:'devforeignpost',
-                       options:{
-                             sort:{
-                                  createdAt: 1
-                             }
-                       }
-                   }).execPopulate()
-                     const  posts= req.user.devforeignpost
+              try {
+                  await req.user.populate({
+                      path: 'devforeignpost',
+                      options: {
+                          sort: {
+                              createdAt: 1
+                          }
+                      }
+                  }).execPopulate()
+                  const posts = req.user.devforeignpost
 
-                  if( ! posts){
-                         return  res.status(404).send({ warn: 'Please follow some companies and stars to get notification' })
+                  if (!posts) {
+                      return res.status(404).send({warn: 'Please follow some companies and stars to get notification'})
                   }
-                  // Temporary
-                  const newPosts= posts.forEach((post)=>{
-                      const objectPost=post.toObject()
-                      delete objectPost.image
-                      return objectPost
-                  })
-                     res.status(200).send(newPosts)
+                  res.status(200).send(posts)
               }
+
               catch(e){
-                   res.status(404).send({ error : e.toString()})
+                   res.status(500).send({ error : e.toString()})
               }
        })
     router.post('/devfeed/post',dauth,upload.single('pic'),async(req,res)=>{
@@ -55,7 +50,8 @@ const upload= multer({
             await  listeners.save()
         const feed = new Feed({
             description: req.body.description,
-            owner: req.user._id
+            owner: req.user._id,
+            type: false
         })
          if(listeners.subscribers){
                    feed.subscribers= listeners.subscribers
@@ -84,19 +80,11 @@ router.get('/devfeed/getPost',dauth,async (req,res)=>{
                 }
             }
         }).execPopulate()
-        const posts= req.user.feeds
+        const posts= req.user.devpost
         if( ! posts){
             return res.status(400).send({ warn: 'You have not posts anything yet'})
         }
-        // Temperory
-        const newPosts=[]
-        posts.forEach((post)=>{
-            const objectPost=post.toObject()
-            delete objectPost.image
-            newPosts.push(objectPost)
-        })
-        console.log(newPosts)
-        res.status(200).send(newPosts)
+        res.status(200).send(posts)
     }
     catch(e){
         res.status(404).send({ error : e.toString() })

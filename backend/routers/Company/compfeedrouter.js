@@ -1,5 +1,6 @@
 const Feed= require('../../models/feeds/feed')
  const cauth =  require('../../authentication/cauth')
+const cdauth= require('../../authentication/cdauth')
 const express= require('express')
   const router= new express.Router()
    const Comp= require('../../models/compaccount/compprofile')
@@ -17,14 +18,29 @@ const upload= multer({
         cb(undefined,true)
     }
 })
-
+// Any one which is authenticate can see image
+router.get('/devprofile/:id/avatar',cdauth,async(req,res)=>{
+    try {
+        const devId = req.params.id
+        const devprofile = await Devprofile.findOne({owner: devId})
+        if(!devprofile || ! devprofile.avatar) {
+            return res.status(400).send('Hey there are no content for you')
+        }
+        res.set('Content-Type','image/png')
+        res.status(200).send(devprofile.avatar)
+    }
+    catch(e){
+        res.status(400).send(e)
+    }
+})
 
  router.post('/compfeed/post',cauth,upload.single('pic'),async(req,res)=>{
           try{
             const listeners= await Comp.findOne({ owner: req.user._id })
               const feed = new Feed({
                   description: req.body.description,
-                  owner: req.user._id
+                  owner: req.user._id,
+                  type: true
            })
                if(listeners){
                          feed.subscribers=listeners.subscribers
@@ -58,15 +74,7 @@ const upload= multer({
                   if( ! posts){
                        return res.status(400).send({ warn: 'You have not posts anything yet'})
                   }
-                     // Temperory
-                  const newPosts=[]
-                    posts.forEach((post)=>{
-                          const objectPost=post.toObject()
-                          delete objectPost.image
-                         newPosts.push(objectPost)
-                   })
-                  console.log(newPosts)
-                  res.status(200).send(newPosts)
+                  res.status(200).send(posts)
               }
               catch(e){
                    res.status(404).send({ error : e.toString() })

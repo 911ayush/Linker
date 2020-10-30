@@ -3,7 +3,7 @@ require('../../db/connect')
 
 
 
-const notificationSchema= new mongoose.Schema({
+ const notificationSchema= new mongoose.Schema({
             head: {
                  type: String,
                   required: true,
@@ -13,14 +13,22 @@ const notificationSchema= new mongoose.Schema({
                  type: String,
                  trim: true
      },
-    active: {
-                type: Boolean,
-                  default: true,
-           },
      redirect:{
                  type: Number,
                 default: 1
-       }
+       },
+     subscribers: [{
+                 subscriber: {
+                     type: mongoose.Schema.Types.ObjectID,
+                     active:  Boolean,
+                     default: true
+                 }
+                 }],
+     owner : {
+                 type: mongoose.Schema.Types.ObjectID,
+                  required: true
+     }
+
 },{
      timestamps: true
 })
