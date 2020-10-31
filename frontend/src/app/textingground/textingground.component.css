@@ -1,0 +1,56 @@
+.contect-detail{
+    border-bottom:  1px solid rgb(136, 136, 136);
+    height:60px;
+}
+.dp{
+    float: left;
+    border-radius: 50%;
+}
+.messenger-name{
+    padding-top: 10px;
+    margin-left: 10px;
+    font-size: 30px;
+    float: left;
+
+}
+.messaging-manage{
+    height:360px;
+    padding:10px 3px;
+    background-color: white;
+    overflow-y: auto;
+}
+.message{
+    padding:3px;
+    margin-top: 4px;
+    border-radius: 3px;
+    background-color: rgb(171, 238, 221);
+    width: 80%;
+}
+.create-message{
+    height: 59px;
+    background-color: rgb(241, 198, 198);
+}
+.send-icon{
+    font-size: 35px;
+    float: right;
+    margin-right: 15px;
+    margin-top: 12px;
+}
+.messa{
+    float: left;
+    width: 80%;
+    margin:1px 0px 2px 2px;
+    height: 52px;
+    background:transparent;
+    border: 1px solid transparent;
+    /* border-top: rgb(161, 161, 159);
+    border-right: rgb(161, 161, 159);
+    border-left: rgb(161, 161, 159); */
+}
+.lol{
+    text-align: center;
+    font-size: 50px;
+    margin-top:50px;
+    line-height: 2;
+    color: rgb(134, 223, 223);
+}

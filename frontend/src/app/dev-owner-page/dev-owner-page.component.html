@@ -11,14 +11,14 @@
                         <img class="feed-image" src="..\assets\cancer-hospital.jpg" alt="not found" width="100%" height="200px">
                     </div>
                     <div class="profile-main">
-                        <h style="margin-left: 20px;">appp</h>
+                        <h>.</h>
                         <div  onclick="document.getElementById('dp').click();">
-                            <img class="upload-dp" [src]="dp" alt="server not connected"/>
+                            <img class="upload-dp" [src]="dpo" alt="server not connected"/>
                             <input type="file" (change)="selectImage($event)" id="dp" name="file" class="dpUp" accept="image/*">
                         </div>
                         <div class="adding-option">
                             <div class="Add-fileds">
-                                <mat-icon class="material-icons-outlined">create</mat-icon>
+                                <mat-icon (click)="openeditcomponent()" class="material-icons-outlined">create</mat-icon>
                             </div>
                         </div>
                         <div class="details">
@@ -35,17 +35,27 @@
             <div class="about">
                 <div class="about-header">
                     About
+                    <mat-icon class="abouticoon" (click)="openeditabout()" class="material-icons-outlined">create</mat-icon>
                 </div>
-                <div class="about-containt">
-                    {{about}}
+                <div *ngIf="abou else elseBlock">
+                    <div class="about-containt">
+                        {{about}}
+                    </div>
+                    
                 </div>
+                <ng-template #elseBlock>
+                    <div class="nabout-containt">
+                        Add Something About Yourself
+                    </div>
+                </ng-template>
             </div>
             <div class="skill-show">
                 <div class="skill-header">
-                    Skills and Interest
+                    Skills
                 </div>
                 <div class="sills">
-                    <mat-chip-list
+                    <div *ngIf="bskill else selseBlock">
+                        <mat-chip-list
                         class="skill-list"
                         cdkDropList 
                         cdkDropListOrientation="horizontal"
@@ -57,34 +67,178 @@
                         {{skill}}
                         </mat-chip>
                         </mat-chip-list>
+                    </div>
+                    <ng-template #selseBlock>
+                        <div class="nabout-containt">
+                            Add Few skills
+                        </div>
+                    </ng-template>
                         <mat-divider></mat-divider>
 
                 </div>
                 <div class="intrests">
-                    <mat-chip-list
-                        class="intrest-list"
-                        cdkDropList 
-                        cdkDropListOrientation="horizontal"
-                        (cdkDropListDropped)="intrest($event)">
-                        <mat-chip
-                        class="chip"
-                        cdkDrag
-                        *ngFor="let intrest of intrests">
-                        {{intrest}}
-                        </mat-chip>
-                        </mat-chip-list>
+                    <div class="skill-header">
+                        Interest
+                    </div>
+                    <div class="sills">
+                        <div *ngIf="binterest else ielseBlock">
+                            <mat-chip-list
+                            class="intrest-list"
+                            cdkDropList 
+                            cdkDropListOrientation="horizontal"
+                            (cdkDropListDropped)="intrest($event)">
+                            <mat-chip
+                            class="chip"
+                            cdkDrag
+                            *ngFor="let intrest of intrests">
+                            {{intrest}}
+                            </mat-chip>
+                            </mat-chip-list>
+                        </div>
+                        <ng-template #ielseBlock>
+                            <div class="nabout-containt">
+                                Add Few Field of Interest
+                            </div>
+                        </ng-template>
+                   </div>
                 </div>
             </div>
+            <div class="myupload">
+                <h>My Feeds</h>
+            </div>
+            <div *ngIf="myfeeds else nofeeds">
+                <div class="feeddw" *ngFor="let feed of feeds">
+                    <post-templet [feedData]="feed" ></post-templet>
+                </div>
+            </div>
+            <ng-template #nofeeds>
+                <div class="myupload">
+                    <h>You have not uploaded anything</h>
+                </div>
+            </ng-template>
         </div>
         
     </div>
     <notify-me></notify-me>
 </div>
-<div id="dpck" class="dpPreview">
+
+<div id="dpcb" class="dpPreview">
     <div class="dpc">Check before Uploading</div>
 <img [src]="url" height="250px" width="250px">
 <div class="upbtn">
     <button style="margin-right: 5px;" (click)="uploaddp()" mat-flat-button color="accent">Upload</button>
-    <button (click)="back()" mat-flat-button color="accent">Back</button>
+    <button (click)="backdpcb()" mat-flat-button color="accent">Back</button>
 </div>
+</div>
+<div id="editcompo">
+    <div class="divhideedit"><p (click)="backeditcompo()" class="hideedit">X</p></div>
+    <div class="editarea">
+        <div class="sideNavi">
+            <div class="option" (click)="opname()">
+                Name
+            </div>
+            <div class="option" (click)="oplocation()">
+                Location
+            </div>
+            <div class="option" (click)="opskills()">
+                Skills
+            </div>
+            <div class="option" (click)="opinterest()">
+                Interest
+            </div>
+        </div>
+        <div class="edit" id="name">
+            Change Your Name
+            <div class="mini-takeaction">
+                <div class="takeaction">
+                    <label>Name</label>
+                    <br>
+                    <input class="nameofcondidate" placeholder="Enter Your Name" [(ngModel)]="nametoc">
+                    <br>
+                   
+                </div>
+            </div>
+        </div>
+        <div class="edit" id="location">
+            Edit Your Location
+            <div class="mini-takeaction">
+                <div class="takeaction">
+                    <label>Location</label>
+                    <br>
+                    <input class="nameofcondidate" placeholder="Enter Your Location" [(ngModel)]="locationtoc">
+                    <br>
+                   
+                </div>
+            </div>
+        </div>
+        <div class="edit" id="skills">
+            Edit Your Skills
+            <div class="mini-takeaction-skill">
+                <div class="takeaction-skill">
+                    <div class="headskiledit">
+                        <label>Skills</label>
+                    <br>
+                    <input class="nameofcondidate-skill" (keydown.enter)="appendSkill()" placeholder="Add Your Skill" [(ngModel)]="skilltoc">
+                    </div>
+                   
+                    <div class="selectedskills">
+                        <mat-chip-list
+                    class="intrest-list"
+                    cdkDropList 
+                    cdkDropListOrientation="horizontal"
+                    (cdkDropListDropped)="intrest($event)">
+                    <mat-chip
+                    class="chip"
+                    cdkDrag
+                    *ngFor="let skill of skillstoc" [id]="skill" (click)="delSkill($event)">
+                    {{skill}}
+                    </mat-chip>
+                    </mat-chip-list>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+        <div class="edit" id="interest">
+            Edit Your Field Of Interest
+            <div class="mini-takeaction-skill">
+                <div class="takeaction-skill">
+                    <div class="headskiledit">
+                        <label>Interests</label>
+                    <br>
+                    <input class="nameofcondidate-skill" (keydown.enter)="appendInter()" placeholder="Add Your interest" [(ngModel)]="intresttoc">
+                    </div>
+                   
+                    <div class="selectedskills">
+                        <mat-chip-list
+                    class="intrest-list"
+                    cdkDropList 
+                    cdkDropListOrientation="horizontal"
+                    (cdkDropListDropped)="intrest($event)">
+                    <mat-chip
+                    class="chip"
+                    cdkDrag
+                    *ngFor="let interest of intreststoc" [id]="interest" (click)="delinterest($event)">
+                    {{interest}}
+                    </mat-chip>
+                    </mat-chip-list>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+        <button class="backbtn" (click)="backeditcompo()" mat-raised-button color="primary">Back</button>
+        <button (click)="saveedits()" mat-raised-button color="accent">Save Changes</button>
+    </div>
+</div>
+<div id="aboutedit">
+    <div class="abouthead">
+        
+        Something that explaines you the best
+    </div>
+    <div class="aboutinput">
+        <textarea class="aboutarea" [(ngModel)]="abouttoc" placeholder="Tell something about you....." rows="15"></textarea>
+    </div>
+    <button class="backbtn" (click)="backeditabout()" mat-raised-button color="primary">Back</button>
+    <button (click)="saveedits()" mat-raised-button color="accent">Save Changes</button>
 </div>

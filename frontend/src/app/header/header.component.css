@@ -16,12 +16,65 @@
     color:rgb(109, 164, 209);
 }
 .search{
-    width: 100%;
+    width: 50%;
     padding-top: 9px;
+    float: right;
+    margin-right: 120px;
     text-align: center;
 }
 .searchit{
     padding:5px;
+}
+#sidesearchreasult{
+    position: absolute;
+    display: none;
+    float: left;
+    width: 200px;
+    height: 100%;
+    padding:5px;
+    background-color: rgb(247, 240, 240);
+}
+.close{
+    font-size: 13px;
+    font-weight: bold;
+    text-align: center;
+    cursor: pointer;
+}
+.user{
+    padding-top: 10px;
+    font-size: 20px;
+    height: 50px;
+    border-top: 1px solid  rgb(136, 136, 136);
+    
+}
+.fordp{
+    width: 40px;
+    height: 40px;
+    float: left;
+}
+.imagee{
+    width: 40px;
+    height: 40px;
+    border: 1px solid rgb(78, 136, 136);
+    border-radius:50%;
+}
+.forname{
+    width: 150px;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    float: left;
+    padding-top: 10px;
+    margin-left: 10px;
+}
+.fordev{
+    height: 40%;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+.forcomp{
+    overflow-x: hidden;
+    overflow-y: auto;
+    height: 50%;
 }
 input{
     height: 30px;

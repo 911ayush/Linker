@@ -3,75 +3,53 @@
 </div>
 <div class="message-body">
     <div class="message-page-right">
-        <div class="connection-list">
+        <div class="connection-list" >
             <div class="list-header">
                 <h>Messaging</h>
                 <button class="icon" mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
                     <mat-icon class="icon" aria-hidden="false" aria-label="people">dehaze</mat-icon>
                   </button>
                   <mat-menu #menu="matMenu">
-                    <button (click)="openMessagingOption()" mat-menu-item>
+                    <button mat-menu-item>
                       <mat-icon  >group_add</mat-icon>
                       <span>New Group Conversation</span>
                     </button>
-                    <button  (click)="openMessagingOption()" mat-menu-item disabled>
+                    <button   mat-menu-item>
                       <mat-icon  >insert_comment</mat-icon>
                       <span>Message Request</span>
                     </button>
                   </mat-menu>
             </div>
             <div class="search-option">  
-                <form class="search-form">
-                    <mat-form-field class="search-full-width">
-                      <input type="text"
+                <mat-form-field class="example-form-field">
+                    <input class="searchIt" type="text" [(ngModel)]="search" (keyup)="onkeyup()"
                              placeholder="Search the contact"
-                             aria-label="Number"
-                             matInput
-                             [formControl]="myControl"
-                             [matAutocomplete]="auto">
-                      <mat-autocomplete #auto="matAutocomplete">
-                        <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
-                          {{option}}
-                        </mat-option>
-                      </mat-autocomplete>
-                    </mat-form-field>
-                  </form>
-                    
+                             matInput>
+                </mat-form-field>
+                
             </div>
             <div class="contect-list">
-                <div class="contect">
-                    <img class="dp" src="..\assets\cancer-hospital.jpg" alt="not found" width="50" height=auto>
-                    <p class="messenger-name">name</p>
+                <div (click)="setUser($event)" [id]="comp._id" class="contect" *ngFor="let comp of compstos"  >
+                    <img (click)="setUser($event)" [id]="comp._id" class="dp" [src]="comp.dpo" alt="." width="48" height=auto>
+                    <!-- <p class="messenger-name">{{connection.name}}</p> -->
+                    <br>
+                    <span (click)="setUser($event)" [id]="comp._id">{{comp.title}}</span>
                 </div>
-                <div class="contect">
-                    <img class="dp" src="..\assets\cancer-hospital.jpg" alt="not found" width="50" height=auto>
-                    <p class="messenger-name">name</p>
-                </div>
+                <div (click)="setUser($event)"  [id]="dev._id" class="contect" *ngFor="let dev of userstos" >
+                  <img class="dp" (click)="setUser($event)"  [id]="dev._id" [src]="dev.dpo" alt="." width="50" height=auto>
+                  <!-- <p class="messenger-name">{{connection.name}}</p> -->
+                  <br>
+                  <span (click)="setUser($event)"  [id]="dev._id">{{dev.name}}</span>
+              </div>
             </div>
         </div>
         <div class="messaging-area">
-            <div class="contect-detail">
-                <img class="dp" src="..\assets\cancer-hospital.jpg" alt="not found" width="50" height=auto>
-                <p class="messenger-name">name</p>
-            </div>
-            <div class="messaging-manage">
-                <div class="message" >
-                    <h>hii ayush ujfuweqnf vji vernvienrvuinrvj rjv wrvjr vje vhf vher vjw evkr venfvj rjkv wrjnvj vjk vjwnvjw vjk vj vjkwr vjk vjrvnuvnfv , vm vsdnvoqwnvqwj vjw vasdn cjwnvqruhvnerv  vm,sdncornvkj v vrnvme,r vjasd </h>
-                </div>
-            </div>
-            <div class="create-message">
-                <div class="write-message">
-                    <input [(ngModel)]="from" placeholder="name"/>
-                    <textarea (keydown.enter)="sendMessage()" [(ngModel)]="message" class="messa" placeholder="write here...."></textarea>
-                </div>
-                <mat-icon (click)="sendMessage()" class="send-icon" aria-hidden="false" aria-label="people">near_me</mat-icon>
-            </div>
+            <app-textingground [user]="user" [f]="f"></app-textingground>
         </div>
     </div>
     <notify-me>
     
     </notify-me>
-    <button (click)="callFn()"></button>
 </div>
 
       

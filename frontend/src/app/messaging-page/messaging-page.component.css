@@ -7,6 +7,7 @@
 }
 .message-body{
     padding-top: 60px;
+   /* // margin-bottom: 60px; */
 }
 .message-page-right{
     float: left;
@@ -43,6 +44,10 @@
     height: 30px;
     border-bottom: 1px solid rgb(136, 136, 136);
     padding:0px 15px 15px 15px;
+    width: 90%;
+}
+.example-form-field{
+    width: 100%;
 }
 .search-form {
     min-width: 150px;
@@ -55,17 +60,24 @@
   }
 .contect-list{
     width: 100%;
-    padding:0px;
-    height: 100px;
+    padding-bottom:10px;
+    font-size: 30px;
+    line-height: .5;
+    max-height: 224px;
+    overflow-y: hidden;
+}
+span{
+    font-size: 14px;
 }
 .contect{
     height:50px;
     padding:5px 9px;
-    border-bottom: 1px solid rgb(136, 136, 136);
+    border-top: 1px solid rgb(136, 136, 136);
 }
 .dp{
     float: left;
     border-radius: 50%;
+    margin-right: 5px;
 }
 .messenger-name{
     padding-top: 10px;
@@ -80,41 +92,5 @@
     box-shadow: 0px 3px 10px rgb(148, 143, 143);
     float: left;
     width:58%;
-}
-.contect-detail{
-    border-bottom:  1px solid rgb(136, 136, 136);
-    height:60px;
-}
-.messaging-manage{
-    height:360px;
-    padding:10px 3px;
-    background-color: white;
-    overflow-y: auto;
-}
-.message{
-    padding:3px;
-    margin-top: 4px;
-    border-radius: 3px;
-    background-color: rgb(171, 238, 221);
-    width: 80%;
-}
-.create-message{
-    height: 59px;
-    background-color: rgb(241, 198, 198);
-}
-.send-icon{
-    font-size: 35px;
-    float: right;
-    margin-right: 15px;
-    margin-top: 12px;
-}
-.messa{
-    float: left;
-    width: 80%;
-    margin:1px 0px 2px 2px;
-    height: 52px;
-    background:transparent;
-    border-top: rgb(161, 161, 159);
-    border-right: rgb(161, 161, 159);
-    border-left: rgb(161, 161, 159);
+    margin-bottom: 60px;
 }

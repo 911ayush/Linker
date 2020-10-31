@@ -1,0 +1,36 @@
+<div>
+    <app-header></app-header>
+</div>
+<div class="job-main">
+    <div class="job-wrapp">
+        <div class="table">
+            <div class="table-header">
+                <div class="table-header-text">
+                    Post that has Closed for further Applications 
+                </div>
+            </div>
+            <div class="table-data">
+                <div *ngIf="isClosedList; else noOneClosed">
+                    <div class="open" *ngFor="let closedone of closedList">
+                        <div class="post">
+                            {{closedone.post}}
+                        </div>
+                        <div class="fromwhom">
+                            {{closedone.createdBy}}
+                        </div>
+                        <div class="form-area">
+                           <div *ngFor="let skill of onlinejob.skills">
+                               {{skill}}
+                           </div>
+                        </div>
+                    </div>
+                </div>
+                <ng-template  #noOneClosed>
+                   <div class="noOneClosed">
+                    No Applications has passed deadline
+                   </div>
+                </ng-template>
+            </div>
+        </div>
+    </div>
+</div>

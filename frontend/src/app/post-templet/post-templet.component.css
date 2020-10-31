@@ -16,18 +16,19 @@
 }
 .dp{
     border-radius: 50%;
+    border: 2px solid rgb(126, 164, 185);
 }
 .auther-detail{
     float: left;
-    margin-top: 10px;
-    height: 60px;
-    line-height: .3;
+    margin-top: 30px;
+    height: auto;
+    line-height: 1;
 }
 .caption{
-    margin:60px 10px;
-    padding: 0px;
+    margin:60px 0px;
+    padding: 0px 20px;
     text-align: left;
-    font-size: 20px;
+    font-size: 15px;
 }
 .caption h{
     padding: 0px;
@@ -38,6 +39,7 @@
     height: 50px;
 }
 .reaction-detail{
+    padding-left: 20px;
     border-bottom: 1px solid rgb(136, 136, 136);
 }
 .icon{

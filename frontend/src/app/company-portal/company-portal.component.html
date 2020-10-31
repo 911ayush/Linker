@@ -10,22 +10,22 @@
                         <img class="feed-image" src="..\assets\cancer-hospital.jpg" alt="not found" width="100%" height="200px">
                     </div>
                     <div class="profile-main">
-                        <h>appp</h>
-                        <div class="upload-dp" onclick="document.getElementById('dp').click();">
-                            <div for="dp">+</div>
-                            <input type="file" id="dp" name="dp" class="dpUp" accept="image/*">
+                        <h>.</h>
+                        <div  onclick="document.getElementById('dp').click();">
+                            <img class="upload-dp" [src]="dpo" alt="server not connected"/>
+                            <input type="file" (change)="selectImage($event)" id="dp" name="file" class="dpUp" accept="image/*">
                         </div>
                         <div class="adding-option">
                             <div class="Add-fileds">
-                                <mat-icon class="material-icons-outlined">create</mat-icon>
+                                <mat-icon (click)="openeditcomponent()" class="material-icons-outlined">create</mat-icon>
                             </div>
                         </div>
                         <div class="details">
                             <div class="name">
-                                {{name}}
+                                {{title}}
                             </div> 
                             <div class="location">
-                                {{location}}
+                                {{address}}
                             </div>
                         </div>
                     </div>
@@ -34,17 +34,27 @@
             <div class="about">
                 <div class="about-header">
                     About
+                    <mat-icon class="abouticoon" (click)="openeditabout()" class="material-icons-outlined">create</mat-icon>
                 </div>
-                <div class="about-containt">
-                    {{about}}
+                <div *ngIf="abou else elseBlock">
+                    <div class="about-containt">
+                        {{about}}
+                    </div>
+                    
                 </div>
+                <ng-template #elseBlock>
+                    <div class="nabout-containt">
+                        Add Something About Yourself
+                    </div>
+                </ng-template>
             </div>
             <div class="skill-show">
                 <div class="skill-header">
                     Skills we look for
                 </div>
                 <div class="sills">
-                    <mat-chip-list
+                    <div *ngIf="bskill else elseskill">
+                        <mat-chip-list
                         class="skill-list"
                         cdkDropList 
                         cdkDropListOrientation="horizontal"
@@ -52,13 +62,105 @@
                         <mat-chip
                         class="chip"
                         cdkDrag
-                        *ngFor="let skill of skills">
-                        {{skill}}
+                        *ngFor="let skil of lookup">
+                        {{skil}}
                         </mat-chip>
                         </mat-chip-list>
+                    </div>
+                    <ng-template #elseskill>
+                        <div class="nabout-containt">
+                            Add the skills you are Looking For
+                        </div>
+                    </ng-template>
                 </div>                
             </div>
         </div>
     </div>
     <notify-me></notify-me>
+</div>
+<div id="dpcb" class="dpPreview">
+    <div class="dpc">Check before Uploading</div>
+<img [src]="url" height="250px" width="250px">
+<div class="upbtn">
+    <button style="margin-right: 5px;" (click)="uploaddp()" mat-flat-button color="accent">Upload</button>
+    <button (click)="backdpcb()" mat-flat-button color="accent">Back</button>
+</div>
+</div>
+<div id="editcompo">
+    <div class="divhideedit"><p (click)="backeditcompo()" class="hideedit">X</p></div>
+    <div class="editarea">
+        <div class="sideNavi">
+            <div class="option" (click)="opname()">
+                About
+            </div>
+            <div class="option" (click)="oplocation()">
+                Location
+            </div>
+            <div class="option" (click)="opskills()">
+                Skills
+            </div>
+        </div>
+        <div class="edit" id="name">
+            Personalize Your About Container  
+            <div class="mini-takeaction">
+                <div class="takeactionabout">
+                    <textarea class="aboutarea" [(ngModel)]="abouttoc" placeholder="Tell something about you....." rows="15"></textarea>
+                    <br>
+                </div>
+            </div>
+        </div>
+        <div class="edit" id="location">
+            Edit Your Location
+            <div class="mini-takeaction">
+                <div class="takeaction">
+                    <label>Location</label>
+                    <br>
+                    <input class="nameofcondidate" placeholder="Enter Your Location" [(ngModel)]="addresstoc">
+                    <br>
+                   
+                </div>
+            </div>
+        </div>
+        <div class="edit" id="skills">
+            Edit Your Skills
+            <div class="mini-takeaction-skill">
+                <div class="takeaction-skill">
+                    <div class="headskiledit">
+                        <label>Skills</label>
+                    <br>
+                    <input class="nameofcondidate-skill" (keydown.enter)="appendSkill()" placeholder="Add Your Skill" [(ngModel)]="skilltoc">
+                    </div>
+                   
+                    <div class="selectedskills">
+                        <mat-chip-list
+                    class="intrest-list"
+                    cdkDropList 
+                    cdkDropListOrientation="horizontal"
+                    (cdkDropListDropped)="skill($event)">
+                    <mat-chip
+                    class="chip"
+                    cdkDrag
+                    *ngFor="let skill of lookuptoc" [id]="skill" (click)="delSkill($event)">
+                    {{skill}}
+                    </mat-chip>
+                    </mat-chip-list>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+        <button class="backbtn" (click)="backeditcompo()" mat-raised-button color="primary">Back</button>
+        <button (click)="saveedits()" mat-raised-button color="accent">Save Changes</button>
+    </div>
+</div>
+<div id="aboutedit">
+    <div class="abouthead">
+        
+        Something that explaines you the best
+    </div>
+    <div class="aboutinput">
+        <textarea class="aboutarea" [(ngModel)]="abouttoc" placeholder="Tell something about you....." rows="15"></textarea>
+    </div>
+    <button class="backbtn" (click)="backeditabout()" mat-raised-button color="primary">Back</button>
+    <button (click)="saveedits()" mat-raised-button color="accent">Save Changes</button>
 </div>

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { DomSanitizer } from '@angular/platform-browser';
 //import { HeaderComponent } from '../header/header.component';
 import { ConnectionServiceService } from '../connection-service.service';
+import { FeedService } from '../feed.service';
 
 @Component({
   selector: 'app-feed',
@@ -9,12 +11,14 @@ import { ConnectionServiceService } from '../connection-service.service';
 })
 export class FeedComponent implements OnInit {
 
-  constructor(private connectionService: ConnectionServiceService) { }
-  email="ayush";
+  constructor(private domSanitizer: DomSanitizer ,private connectionService: ConnectionServiceService,private feedService:FeedService) { }
   caption="";
-  url = "./assets/cancer-hospital.jpg";
-  image;
+  erroru:boolean=false;
+  url:any;
+  image:File;
+  feeds:any=[];
   ngOnInit(): void {
+    this.getTheFeeds()
   }
   openWritePostContainer(){
     document.getElementById("showcase").style.display="block";
@@ -39,6 +43,7 @@ export class FeedComponent implements OnInit {
     document.getElementById('prevpic').style.display="block";
   }
   preprev(e){
+    document.getElementById("prevpic").style.display="block";
     if(e.target.files){
       var reader = new FileReader();
       reader.readAsDataURL(e.target.files[0]);
@@ -48,18 +53,58 @@ export class FeedComponent implements OnInit {
     }
 
   }
-  uploaddp(){
+  uploadpost(){
     const formData = new FormData();
-    formData.append('file',this.image);
-    formData.append('caption',this.caption);
-    this.connectionService.uploadpost(formData,5).subscribe(
-      (res)=> {
+    formData.append('pic',this.image);
+    formData.append('description',this.caption);
+    //console.log(formData);
+    this.feedService.uploadpost(formData).subscribe(
+      (data)=> {
         alert("upload succesfull");
          document.getElementById('dpck').style.display="none";
+         this.image = null;
+         this.caption="";
+         this.url;
       },
-
-      (err)=> console.log(err)
+      (err)=> {
+        this.erroru=true;
+        if(err.error.error ==="Please Upload image in format of jpeg or jpg or png"){
+          alert(err.error.error);
+        }
+        else if(err.status === 400){
+          alert(err.error);
+        }
+        else if(err.status === 404){
+          alert(err.error);
+        }
+        else{
+          alert("upload succesfull");
+          document.getElementById('showcase').style.display="none";
+          this.caption="";
+          this.url="";
+        }
+      }
       );
-      
+    //   .catch(()=>{
+    //     setTimeout(()=>
+    //     {if(this.erroru==false){
+    //       alert("upload succesfull");
+    //      document.getElementById('dpck').style.display="none";
+    //      this.image = null;
+    //      this.caption="";
+    //      this.url;
+    //   }
+    // },1000);
+    //   });   
+  }
+  getTheFeeds(){
+    this.feedService.getFeeds().subscribe(
+      (data)=>{
+        console.log(data);
+        this.feeds = data;
+        console.log(data[0].image.data);
+       },
+      (error)=>console.log(error.error)
+    );
   }
 }

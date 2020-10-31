@@ -17,10 +17,10 @@ export class DevNetworkComponent implements OnInit {
   pending=[];
   sent=[];
   fetchdata(){
-    this.connectionService.getnetworkReq(5).subscribe((data) => {
-      console.log(data);
-      this.pending = data.pending,
-      this.sent = data.sent
-    });
+    // this.connectionService.getnetworkReq(5).subscribe((data) => {
+    //   console.log(data);
+    //   this.pending = data.pending,
+    //   this.sent = data.sent
+    // });
   }
 }

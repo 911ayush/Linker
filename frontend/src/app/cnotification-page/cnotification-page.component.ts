@@ -15,9 +15,9 @@ export class CnotificationPageComponent implements OnInit {
   }
   notifications=[];
   fetchdata(){
-    this.connectionService.getcNotification(5).subscribe((data) => {
-      console.log(data);
-      this.notifications = data;
-    });
+    // this.connectionService.getcNotification(5).subscribe((data) => {
+    //   console.log(data);
+    //   this.notifications = data;
+    // });
   }
 }

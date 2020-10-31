@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NO_ERRORS_SCHEMA, Component, NgModule } from '@angular/core';
+import { NO_ERRORS_SCHEMA, Component, NgModule, ErrorHandler } from '@angular/core';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -19,8 +19,12 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatChipsModule } from '@angular/material/chips';
 import { AuthGuard } from './auth.guard';
 import { DragDropModule } from '@angular/cdk/drag-drop';
+import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatButtonModule } from '@angular/material/button';
+import { MatRadioModule } from '@angular/material/radio';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatNativeDateModule } from '@angular/material/core';
 
 import { SignLogComponent } from './sign-log/sign-log.component';
 import { HomePageComponent } from './home-page/home-page.component';
@@ -44,6 +48,12 @@ import { DevNetworkComponent } from './dev-network/dev-network.component';
 import { CNetworkComponent } from './c-network/c-network.component';
 import { CnotificationPageComponent } from './cnotification-page/cnotification-page.component';
 import { JobpageComponent } from './jobpage/jobpage.component';
+import { TextinggroundComponent } from './textingground/textingground.component';
+import { OtherProfileComponent } from './other-profile/other-profile.component';
+import { ViewCompComponent } from './view-comp/view-comp.component';
+import { ViewCFeedsComponent } from './view-cfeeds/view-cfeeds.component';
+import { ClosedjobsCompComponent } from './closedjobs-comp/closedjobs-comp.component';
+import { ErrorHendlerService } from './error-hendler.service';
 
 
 
@@ -69,7 +79,12 @@ import { JobpageComponent } from './jobpage/jobpage.component';
     DevNetworkComponent,
     CNetworkComponent,
     CnotificationPageComponent,
-    JobpageComponent
+    JobpageComponent,
+    TextinggroundComponent,
+    OtherProfileComponent,
+    ViewCompComponent,
+    ViewCFeedsComponent,
+    ClosedjobsCompComponent
   ],
   imports: [
     BrowserModule,
@@ -80,6 +95,7 @@ import { JobpageComponent } from './jobpage/jobpage.component';
     HttpClientModule,
     MatCardModule,
     MatListModule,
+    MatDatepickerModule,
     MatSnackBarModule,
     FormsModule,
     MatChipsModule,
@@ -91,17 +107,24 @@ import { JobpageComponent } from './jobpage/jobpage.component';
     MatMenuModule,
     MatAutocompleteModule,
     MatSelectModule,
-    SocialLoginModule
-    
+    SocialLoginModule,
+    MatRadioModule,
+    MatCheckboxModule,
+    MatNativeDateModule
   ],
   providers: [
     ConnectionServiceService,
     AuthGuard,
     MessageServiceService,
+    MatDatepickerModule,
+    MatNativeDateModule,
     {
       provide:HTTP_INTERCEPTORS,
       useClass:TokenInterceptorService,
       multi:true
+    },{
+      provide:ErrorHandler,
+      useClass:ErrorHendlerService
     },
     {
       provide: 'SocialAuthServiceConfig',

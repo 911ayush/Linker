@@ -1,15 +1,15 @@
 const express = require('express');
 const mongoose = require('mongoose');
-const cors = require('cors');
-const bodyParser = require('body-parser');
+
 const path = require('path');
 const ejs = require('ejs');
 var app = new express();
 const router = express.Router();
 const multer = require('multer');
-// var server = require('http').Server(app);
-// var io = require('socket.io')(server);
-
+var server = require('http').Server(app);
+var io = require('socket.io')(server);
+const cors = require('cors');
+const bodyParser = require('body-parser');
 app.use(cors());
 app.use(bodyParser.json());
 
@@ -30,6 +30,17 @@ var cprofile={
 var cNotification=[{name:"ayush yadav"},{name:"Sudyut salv"},{name:"Boss"},{name:"Divyansh"}];
 var pending=[{name:"ayush"},{name:"Sudyut"},{name:"Boss"},{name:"Divyansh"}];
 var sent=[{name:"ayush yadav"},{name:"Sudyut"},{name:"Boss chutiya"},{name:"Divyansh"}];
+var connection=[{name:"ayush yadav",
+                _id:"4567898765467"                
+                },
+                {name:"vishal kumar",
+                _id:"4567764565467"},
+                {name:"bhargav duvey",
+                _id:"4567675765467"},
+                {name:"pragya jha",
+                _id:"4567823465467"},
+                {name:"priyanshu jha",
+                _id:"4567829565467"}]
 var network={
     pending:pending,
     sent:sent
@@ -59,6 +70,19 @@ app.post('/profile/changedp',upload.single('file'),(req,res,next)=>{
     }
     res.send(file)
 })
+app.get('/connection-list/:id', (req,res) => {
+    console.log("connection list sending");
+    res.send(connection);
+ });
+// app.post('/post/:id',uploadpost.single('file'),(req,res,next)=>{
+//     const file = req.file;
+//     if(!file){
+//         const error = new Error('please upload a file')
+//         error.httpStatusCode = 400
+//         return next(error)
+//     }
+//     res.send(file)
+// })
 // mongoose.connect('mongodb://localhost:27017/testdb')
 // const db = mongoose.connection
 
@@ -110,6 +134,10 @@ router.route('/profile/:id').get((req,res) => {
     console.log(req.params.id);
     res.send(profile);
 });
+// router.route('/profile/:id').get((req,res) => {
+//     console.log(req.params.id);
+//     res.send(profile);
+// });
 router.route('/company/profile/:id').get((req,res) => {
     console.log(req.params.id);
     res.send(cprofile);
@@ -131,17 +159,21 @@ router.route('/notification/:id').get((req,res) => {
     res.send(cNotification);
 });
 //var mess=[];
-// io.on('connection',function(socket){
-//     console.log("a user connected");
-//     socket.emit("start","here is some data ");
-//     socket.on("message",(data) =>{
-//         console.log(data);
-//         mess.push(data);
-//         socket.emit("ayushrudra",data);
-//     })
-// });
+io.on('connection',function(socket){
+    console.log("a user connected");
+    // socket.emit("start","here is some data ");
+    // socket.on("message",(data) =>{
+    //     console.log(data);
+    //     mess.push(data);
+    //     socket.emit("ayushrudra",data);
+    // })
+});
 app.use('/',router);
-app.listen(4000,()=>{
+
+// var ss = ['user','me'].sort().join('');
+// console.log(ss);
+
+server.listen(4000,()=>{
     console.log("listening at 4000");
 });
 

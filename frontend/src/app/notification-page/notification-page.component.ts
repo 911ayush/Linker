@@ -11,13 +11,13 @@ export class NotificationPageComponent implements OnInit {
   constructor(private connectionService:ConnectionServiceService) { }
 
   ngOnInit(): void {
-    this.fetchdata();
+    this.fetchnotification();
   }
   notifications=[];
-  fetchdata(){
-    this.connectionService.getnotification(5).subscribe((data) => {
-      console.log(data);
-      this.notifications = data;
-    });
+  fetchnotification(){devnotification
+    this.notificationService.getTheNotification().subscribe(
+      (data)=>console.log(data),
+      (error)=>console.log(error)
+    );
   }
 }

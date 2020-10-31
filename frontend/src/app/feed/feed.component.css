@@ -4,7 +4,7 @@
     opacity: 1;
     position: fixed;
     left: 25%;
-    display: block;
+    display: none;
     width:700px;
     height: auto;
     border: 1px solid black;
@@ -59,6 +59,7 @@
     margin: auto;
     width:650px;
     height:630px;
+    display: none;
 }
 .features{
     padding:3px;

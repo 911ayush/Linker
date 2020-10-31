@@ -1,0 +1,85 @@
+<div *ngIf="compn else devel">
+    <app-header-c></app-header-c>
+</div>
+<ng-template #devel>
+    <app-header></app-header>
+</ng-template>
+<ng-templet >
+
+</ng-templet>
+<div class="dev-page">
+    <div class="right-corner">
+        <div class="profile-wrapper">
+            <div class="profile-display">
+                <div class="top-profile">
+                    <div class="cover-pic">
+                        <img class="feed-image" src="..\assets\cancer-hospital.jpg" alt="not found" width="100%" height="200px">
+                    </div>
+                    <div class="profile-main">
+                        <h>.</h>
+                        <div>
+                            <img class="upload-dp" [src]="dpo" alt="server not connected"/>
+                            </div>
+                        <div class="adding-option">
+                            <div class="Add-fileds">
+                                <button class="fnkbtn" routerLink="/company/3/feed" mat-raised-button color="primary">View feeds</button>
+                                <button class="fnbtn" (click)="follow()" mat-raised-button color="primary">{{action}}</button> 
+                            </div>
+                        </div>
+                        <div class="details">
+                            <div class="name">
+                                {{title}}
+                            </div> 
+                            <div class="location">
+                                {{address}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="about">
+                <div class="about-header">
+                    About
+                   </div>
+                <div *ngIf="abou else elseBlock">
+                    <div class="about-containt">
+                        {{about}}
+                    </div>
+                    
+                </div>
+                <ng-template #elseBlock>
+                    <div class="nabout-containt">
+                        Add Something About Yourself
+                    </div>
+                </ng-template>
+            </div>
+            <div class="skill-show">
+                <div class="skill-header">
+                    Skills we are looking for
+                </div>
+                <div class="sills">
+                    <div *ngIf="bskill else elseskill">
+                        <mat-chip-list
+                        class="skill-list"
+                        cdkDropList 
+                        cdkDropListOrientation="horizontal"
+                        (cdkDropListDropped)="skill($event)">
+                        <mat-chip
+                        class="chip"
+                        cdkDrag
+                        *ngFor="let skil of lookup">
+                        {{skil}}
+                        </mat-chip>
+                        </mat-chip-list>
+                    </div>
+                    <ng-template #elseskill>
+                        <div class="nabout-containt">
+                            No Data Provided By Company
+                        </div>
+                    </ng-template>
+                </div>                
+            </div>
+        </div>
+    </div>
+    <notify-me></notify-me>
+</div>

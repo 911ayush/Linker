@@ -1,15 +1,41 @@
 <div class="header-body">
     <div class="first-half">
         <div class="search">
-            <input [(ngModel)]="search" (keyup.enter)="onkeyup()"/>  
+            <input [(ngModel)]="search" class="searchit" (mouseover)="opensearchresult()" placeholder="search..." (keyup)="onkeyup()"/>  
         </div>
     </div>
     <div class="second-half">    
-            <mat-icon class="icon" routerLink="/company/:id/feed" aria-hidden="true" aria-label="home">home</mat-icon>
-            <mat-icon class="icon" routerLink="/company/:id/network" aria-hidden="false" aria-label="people">people</mat-icon>
-            <mat-icon class="icon" routerLink="/company/:id/manage" aria-hidden="false" aria-label="people">business_center</mat-icon>
-            <mat-icon class="icon" routerLink="/company/:id/cnotification" aria-hidden="false" aria-label="notification">notifications</mat-icon>
-            <mat-icon class="icon" routerLink="/company/:id/message" aria-hidden="false" aria-label="message">message</mat-icon>
-            <mat-icon class="icon" routerLink="/company/:id" aria-hidden="false" aria-label="message">mood</mat-icon>
+            <mat-icon class="icon" routerLink="/company/feed" aria-hidden="true" aria-label="home">home</mat-icon>
+            <mat-icon class="icon" routerLink="/company/network" aria-hidden="false" aria-label="people">people</mat-icon>
+            <mat-icon class="icon" routerLink="/company/manage" aria-hidden="false" aria-label="people">business_center</mat-icon>
+            <mat-icon class="icon" routerLink="/company/cnotification" aria-hidden="false" aria-label="notification">notifications</mat-icon>
+            <mat-icon class="icon" routerLink="/company/message" aria-hidden="false" aria-label="message">message</mat-icon>
+            <mat-icon class="icon" routerLink="/company" aria-hidden="false" aria-label="message">mood</mat-icon>
+    </div>
+</div>
+<div id="sidesearchreasult">
+    <div class="close" (click)="hidesearchresult()">
+        ~~~~~~~~~BACK~~~~~~~~~
+    </div>
+    <div class="fordev">
+       
+        <div class="user" (click)="nevigateToDevById($event)" *ngFor="let usere of userstos" [id]="usere._id">
+            <div class="fordp">
+                <img (click)="nevigateToDevById($event)" [id]="usere._id" class="imagee" [src]="usere.dpo">
+            </div>
+            <div (click)="nevigateToDevById($event)"  [id]="usere._id" class="forname">
+                {{usere.name}} 
+            </div>
+        </div>     
+    </div>
+    <div class="forcomp">
+        <div class="user" (click)="nevigateToCompById($event)" *ngFor="let comp of compstos" [id]="comp._id">
+            <div class="fordp">
+                <img (click)="nevigateToCompById($event)"  [id]="comp._id" class="imagee" [src]="comp.dpo">
+            </div>
+            <div (click)="nevigateToCompById($event)"  [id]="comp._id" class="forname">
+                {{comp.title}} 
+            </div>
+        </div>  
     </div>
 </div>

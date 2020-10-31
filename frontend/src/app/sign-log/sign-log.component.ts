@@ -24,16 +24,18 @@ export class SignLogComponent{
   }
  
   logIn(){
-    alert("yoo");
     this.authService.loginUser(this.loginUserData)
       .subscribe(
         res => {
           alert("yupp");
           console.log(res);
           localStorage.setItem('token',res.logToken);
-          this.router.navigate(['/dev/feed'])
+          localStorage.setItem('id',res.dev._id);
+          localStorage.setItem('As',"developer");
+          this.router.navigate(['/feed'])
         },
-        err => console.log(err)
+        err => {console.log(err);
+        console.log("ass");}
       );
   }
   signUp(){

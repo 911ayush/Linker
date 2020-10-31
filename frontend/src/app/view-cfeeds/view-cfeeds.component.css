@@ -1,0 +1,98 @@
+
+.feed-body{
+    padding-top: 60px;
+}
+
+.left{
+    float: left;
+    height: 100%;
+    width: 25%;
+    padding:30px 0px;
+}
+.menu{
+    display: block;
+    width: 70%;
+    padding-left: 105px;
+}
+.group{
+    background-color: white;
+    box-shadow: 0px 3px 10px rgb(148, 143, 143);
+    display: block;
+    min-height:100px;
+    padding-left: 4px;
+    padding-top: 5px;
+    border: .1px solid rgb(136, 136, 136);
+    border-radius: 3px;
+
+}
+.events{
+    background-color: white;
+    box-shadow: 0px 3px 10px rgb(148, 143, 143);
+    display: block;
+    padding-left: 4px;
+    padding-top: 5px;
+    min-height: 100px;
+    margin-top:2px;
+    border: .1px solid rgb(136, 136, 136);
+    border-radius: 3px;
+}
+
+
+.middle{
+    float: left;
+    height: 100%;
+    width: 48%;
+    padding:30px 0px;
+}
+.profile-wrapper{
+    margin-left: 31px;
+    width:92%;
+}
+.profile-display{
+    border: 1px solid rgb(136, 136, 136);
+    box-shadow: 0px 3px 10px rgb(148, 143, 143);
+}
+.top-profile{
+    height:430px;
+    width: 100%;
+}
+.cover-pic{
+    height: 200px;
+    width: 100%;
+    border-bottom: 1px solid rgb(136, 136, 136);
+}
+.profile-main{
+    height: 229px;
+}
+.upload-dp{
+    position: absolute;
+    width:150px;
+    margin-top: -100px;
+    margin-left: 20px;
+    border: 4px solid rgb(78, 136, 136);
+    height: 150px;
+    text-align: center !important;
+    /* background-image: url("..\..\assets\cancer-hospital.jpg"); */
+    border-radius: 50%;
+}
+.adding-option{
+    margin-top: 40px;
+    float: right;
+    width: 60%;
+    height: 40px;
+}
+.Add-fileds{
+    text-align: right;
+    width: 80%;
+    font-size: 22px;
+}
+.fnbtn{
+    margin-right: 0px;
+}
+.details{
+    font-size: 30px;
+    line-height: 1.5;
+    padding-left: 30px;
+    margin-top:100px;
+}
+

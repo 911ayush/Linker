@@ -1,0 +1,123 @@
+.dev-page{
+    padding-top: 30px;
+    width: 1300px;
+    margin: 0px auto;
+}
+.right-corner{
+    margin-top: 30px;
+    float: left;
+    width: 75%;
+}
+.profile-wrapper{
+    padding-left: 170px;
+    width:70%;
+}
+.profile-display{
+    border: 1px solid rgb(136, 136, 136);
+    box-shadow: 0px 3px 10px rgb(148, 143, 143);
+}
+.top-profile{
+    height:430px;
+    width: 100%;
+}
+.cover-pic{
+    height: 200px;
+    width: 100%;
+    border-bottom: 1px solid rgb(136, 136, 136);
+}
+.profile-main{
+    height: 229px;
+}
+.upload-dp{
+    position: absolute;
+    width:150px;
+    margin-top: -100px;
+    margin-left: 20px;
+    border: 4px solid rgb(78, 136, 136);
+    height: 150px;
+    text-align: center !important;
+    /* background-image: url("..\..\assets\cancer-hospital.jpg"); */
+    border-radius: 50%;
+}
+.dpUp{
+    margin-top: 40px;
+    margin-left: 25px;
+    display: none;
+}
+.dp{
+    padding-left: 30px;
+}
+.adding-option{
+    margin-top: 40px;
+    float: right;
+    width: 40%;
+    height: 40px;
+}
+.Add-fileds{
+    text-align: center;
+    width: 90%;
+    font-size: 22px;
+}
+.fnkbtn{
+    display: inline-block;
+    margin-right: 30px;
+}
+.details{
+    font-size: 30px;
+    line-height: 1.5;
+    padding-left: 30px;
+    margin-top:100px;
+}
+.about{
+    margin-top: 30px;
+    height: auto;
+    min-height: 60px;
+    border: 1px solid rgb(136, 136, 136);
+    box-shadow: 0px 3px 10px rgb(148, 143, 143);
+    color: rgb(143, 125, 125);
+    padding: 20px;
+    font-size: 25px;
+}
+
+.about-containt{
+    color: black;
+    margin-top: 15px;
+    font-size: 20px;
+}
+.abouticoon{
+    float: right;
+}
+.nabout-containt{
+    color: rgb(175, 123, 123);
+    margin-top: 15px;
+    font-size: 20px;
+}
+.skill-show{
+    margin-top: 30px;
+    margin-bottom: 30px;
+    border: 1px solid rgb(136, 136, 136);
+    box-shadow: 0px 3px 10px rgb(148, 143, 143);
+    color: rgb(143, 125, 125);
+    padding: 20px;
+    font-size: 25px;
+}
+.sills{
+    height: auto;
+    margin-top: 20px;
+}
+.mat-divider{
+    margin-top: 20px;
+    border: 1px solid rgb(187, 180, 180);
+    
+}
+.intrests{
+    height: auto;
+    margin-top: 20px;
+}
+.chip.cdk-drag-animating {
+    transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+  }
+  
+.chip .cdk-drop-list-dragging {
+    transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}

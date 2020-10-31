@@ -1,12 +1,82 @@
-.div-header{
+#showcase{
+    background-color:rgb(229, 240, 240);
+    margin-top: 30px;
+    opacity: 1;
     position: fixed;
-    width: 100%;
-    min-width: 1300px;
-    margin-bottom: 40px;
+    left: 25%;
+    display: none;
+    width:700px;
+    height: auto;
+    border: 1px solid black;
+}
+.topmost{
+    padding:10px;
+}
+.post-gui{
+    display: inline;
+    font-size: 30px;
+}
+.cancell{
+    display: inline;
+    float: right;
+}
+#post-pic{
+    display: none;
+}
+.dopost{
+    width: 99%;
+    min-height:300px;
+    max-height: 400px;
+    overflow-y: scroll;
+    margin: auto;
+
+}
+.uppers{
+    padding:4px;
+    height: 50px;
+}
+.profile-pic{
+    float: left;    
+}
+.feed-image{
+    height: 50px;
+    border: 1px solid black;
+    border-radius: 50%;
+}
+.profile-name{
+    float: left;
+    padding-left: 20px;
+    font-size: 20px;
+}
+.textfield{
+    background-color:  rgb(229, 240, 240);
+    padding: 10px;
+    font-size: 20px;
+    border: none;
+    width: 96%;
+}
+.prevpic{
+    margin: auto;
+    width:650px;
+    height:630px;
+    display: none;
+}
+.features{
+    padding:3px;
+}
+.optio{
+    float: left;
+    padding-left: 20px;
+}
+.post-btn{
+    float: left;
+    margin-left: 600px;
+    margin-bottom: 10px;
 }
 .feed-body{
-    padding-top: 90px;
+    padding-top: 60px;
 }
+
 .left{
     float: left;
     height: 100%;

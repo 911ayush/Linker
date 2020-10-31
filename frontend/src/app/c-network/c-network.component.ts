@@ -16,10 +16,10 @@ export class CNetworkComponent implements OnInit {
   pending=[];
   sent=[];
   fetchdata(){
-    this.connectionService.getcnetworkReq(5).subscribe((data) => {
-      console.log(data);
-      this.pending = data.pending,
-      this.sent = data.sent
-    });
+    // this.connectionService.getcnetworkReq(5).subscribe((data) => {
+    //   console.log(data);
+    //   this.pending = data.pending,
+    //   this.sent = data.sent
+    // });
   }
 }

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ConnectionServiceService } from '../connection-service.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-sign-log-company',
@@ -6,26 +8,39 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./sign-log-company.component.css']
 })
 export class SignLogCompanyComponent implements OnInit {
-  email:any;
-  password:any;
-  Cpassword:any;
-  constructor() { }
+  registerUserData:any={};
+  loginUserData:any= {};
+  constructor(private authService:ConnectionServiceService,private router:Router) { }
   
   ngOnInit(): void {
   }
- 
-  logIn(event){
-    event.preventDefault;
-    const target = event.target;
-    this.email = target.querySelector('#email').value;
-    this.password = target.querySelector('#password').value;
+  logIn(){
+    
+    this.authService.cloginUser(this.loginUserData)
+      .subscribe(
+        res => {
+       //   console.log(res);
+          localStorage.setItem('token',res.logToken);
+          localStorage.setItem('id',res.comp._id);
+         //console.log(res.logToken);
+         localStorage.setItem('As',"company");
+          this.router.navigate(['/company']);
+        },
+        err => console.log(err)
+      );
   }
-  signUp(event){
-    event.preventDefault;
-    const target = event.target;
-    this.email = target.querySelector('#email').value;
-    this.password = target.querySelector('#password').value;
-    this.Cpassword = target.querySelector('#confirPassword').value;
+ 
+  signUp(){
+    if(this.registerUserData.password === this.registerUserData.confirmPassword){
+      this.authService.cregisterUser(this.registerUserData)
+    .subscribe(
+      res => console.log(res),
+      err => console.log(err)
+    );
+    }
+    else{
+      alert("not same");
+    }
   }
   headTologForm(){
    

@@ -1,42 +1,86 @@
 <div>
     <app-header-c></app-header-c>
+</div>
+<div id="showcase">
+    <div class="topmost">
+        <div class="post-gui">
+        <span>Create Post</span>
+        </div>
+        <div class="cancell">
+            <span (click)="hidepostarea()" style="cursor: pointer;" class="material-icons">
+                clear
+                </span>
+        </div>
     </div>
-    <div class="feed-body">
-        <div class="left">
-            <div class="menu">
-                <div class="group">
-                    <p>group</p>
+        <div class="dopost">
+            <div class="uppers">
+                <div class="profile-pic">
+                    <img class="feed-image" src="..\assets\cancer-hospital.jpg" alt="not found" >
                 </div>
-                <div class="events">
-                    <p>events</p>
-                </div>
-            </div>
-        </div>
-    
-    
-        <div class="middle">
-            <div class="post-create-box">
-                <div class="post-create-box-input">
-                    <div class="ico" (click)="openWritePostContainer()">
-                        <mat-icon class="icon write" aria-hidden="true" aria-label="home">edit</mat-icon>
-                    </div>
-                    <div class="text" (click)="openWritePostContainer()">
-                        <p>Start a post</p>
-                    </div>
-                </div>
-                <div class="post-create-box-option">
-                    <div class="option">
-                        <mat-icon (click)="openWritePostContainer()" class="icon pic" aria-hidden="true" aria-label="home">add_a_photo</mat-icon>
-                    </div>
-                    <div class="option">
-                        <mat-icon (click)="openWritePostContainer()" class="icon note" aria-hidden="true" aria-label="home">content_paste</mat-icon>
-                    </div>
+                <div class="profile-name">
+                    Ayush Yadav
                 </div>
             </div>
-            <post-templet></post-templet>
-            <post-templet></post-templet>
+            <div class="actua">
+                <textarea (keydown.enter)="sendMessage()" [(ngModel)]="caption" class="textfield" rows="10" placeholder="Start Your Post... " ></textarea>
+            </div>
+            <div id="prevpic" class="prevpic">
+                <span (click)="leavePic()" style="float: right;">X</span>
+                <img width="100%" [src]="url">
+            </div>
         </div>
-        <notify-me></notify-me>
+    <div class="features">
         
+        <div class="optio">
+            <input type="file" (change)="showpic($event)" id="post-pic" name="post-pic"  accept="image/*">
+            <span onclick="document.getElementById('post-pic').click();" class="material-icons">
+                add_photo_alternate
+                </span>ADD PICTURE
+        </div>
+       
+        <div class="post-btn">
+            <button (click)="uploadpost()"  mat-flat-button color="accent">Post</button>
+        </div>
     </div>
+</div>
+<div class="feed-body">
+    <div class="left">
+        <div class="menu">
+            <div class="group">
+                <p>group</p>
+            </div>
+            <div class="events">
+                <p>events</p>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="middle">
+        <div class="post-create-box">
+            <div class="post-create-box-input">
+                <div class="ico" (click)="openWritePostContainer()">
+                    <mat-icon class="icon write" aria-hidden="true" aria-label="home">edit</mat-icon>
+                </div>
+                <div class="text" (click)="openWritePostContainer()">
+                    <p>Start a post</p>
+                </div>
+            </div>
+            <div class="post-create-box-option">
+                <div class="option">
+                    <mat-icon (click)="openWritePostContainer()" class="icon pic" aria-hidden="true" aria-label="home">add_a_photo</mat-icon>
+                </div>
+                <div class="option">
+                    <mat-icon (click)="openWritePostContainer()" class="icon note" aria-hidden="true" aria-label="home">content_paste</mat-icon>
+                </div>
+            </div>
+        </div>
+        <div class="feeddw" *ngFor="let feed of feeds">
+            <post-templet [feedData]="feed" ></post-templet>
+        </div>
+
+    </div>
+    <notify-me></notify-me>
+    
+</div>
     

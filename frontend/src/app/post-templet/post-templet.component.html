@@ -1,25 +1,25 @@
 <div class="post-feed">
     <div class="post-detail">
         <div class="auther-dp">
-            <img class="dp" src="..\assets\cancer-hospital.jpg" alt="not found" width="60" height=auto>
+            <img class="dp" [src]="dp" alt="not found" width="60" height="60">
         </div>
         <div class="auther-detail">
-            <h1>{{email}}</h1>
-            <p>{{email}}</p>
+            <h1>{{name}}</h1>
         </div><br>
         <div class="caption">
-            <h>Hurray!!!!!!</h>
+            <mat-divider></mat-divider>
+            {{feedData.description}}
         </div>
     </div>
     <div class="post-pic">
-        <img class="feed-image" src="..\assets\cancer-hospital.jpg" alt="not found" width="100%" height=auto>
+        <img class="feed-image" [src]="img" alt="not found" width="100%" height=auto>
     </div>
     <div class="post-reaction">
         <div class="reaction-detail">
-            <h>100 likes</h>
+            <h>{{likes}}</h>
         </div>
         <div class="reaction-option">
-            <mat-icon class="icon" aria-hidden="false" aria-label="message">thumb_up_alt</mat-icon>
+            <mat-icon class="icon" (click)="likeIt()" aria-hidden="false" aria-label="message">thumb_up_alt</mat-icon>
             <mat-icon class="icon" aria-hidden="false" aria-label="message">insert_comment</mat-icon>
             <mat-icon class="icon" aria-hidden="false" aria-label="message">near_me</mat-icon>
             <mat-icon class="icon" aria-hidden="false" aria-label="message">forward</mat-icon>

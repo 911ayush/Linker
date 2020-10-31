@@ -1,0 +1,117 @@
+
+<div>
+    <app-header></app-header>
+</div>
+
+<div class="dev-page">
+    <div class="right-corner">
+        <div class="profile-wrapper">
+            <div class="profile-display">
+                <div class="top-profile">
+                    <div class="cover-pic">
+                        <img class="feed-image" src="..\assets\cancer-hospital.jpg" alt="not found" width="100%" height="200px">
+                    </div>
+                    <div class="profile-main">
+                        <h>.</h>
+                        <div>
+                            <img class="upload-dp" [src]="dpo" alt="server not connected"/>
+                           </div>
+                        <div class="adding-option">
+                            <div class="Add-fileds">
+                                <button class="fnbtn" (click)="followit()" mat-raised-button color="primary">Follow</button> 
+                                 
+                            </div>
+                        </div>
+                        <div class="details">
+                            <div class="name">
+                                {{name}}
+                            </div> 
+                            <div class="location">
+                                {{location}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="about">
+                <div class="about-header">
+                    About
+                </div>
+                <div *ngIf="abou else elseBlock">
+                    <div class="about-containt">
+                        {{about}}
+                    </div>
+                    
+                </div>
+                <ng-template #elseBlock>
+                    <div class="nabout-containt">
+                        Add Something About Yourself
+                    </div>
+                </ng-template>
+            </div>
+            <div class="skill-show">
+                <div class="skill-header">
+                    Skills
+                </div>
+                <div class="sills">
+                    <div *ngIf="bskill else selseBlock">
+                        <mat-chip-list
+                        class="skill-list"
+                        cdkDropList 
+                        cdkDropListOrientation="horizontal"
+                        (cdkDropListDropped)="skill($event)">
+                        <mat-chip
+                        class="chip"
+                        cdkDrag
+                        *ngFor="let skill of skills">
+                        {{skill}}
+                        </mat-chip>
+                        </mat-chip-list>
+                    </div>
+                    <ng-template #selseBlock>
+                        <div class="nabout-containt">
+                            Add Few skills
+                        </div>
+                    </ng-template>
+                        <mat-divider></mat-divider>
+
+                </div>
+                <div class="intrests">
+                    <div class="skill-header">
+                        Interest
+                    </div>
+                    <div class="sills">
+                        <div *ngIf="binterest else ielseBlock">
+                            <mat-chip-list
+                            class="intrest-list"
+                            cdkDropList 
+                            cdkDropListOrientation="horizontal"
+                            (cdkDropListDropped)="intrest($event)">
+                            <mat-chip
+                            class="chip"
+                            cdkDrag
+                            *ngFor="let intrest of intrests">
+                            {{intrest}}
+                            </mat-chip>
+                            </mat-chip-list>
+                        </div>
+                        <ng-template #ielseBlock>
+                            <div class="nabout-containt">
+                                Add Few Field of Interest
+                            </div>
+                        </ng-template>
+                   </div>
+                </div>
+                
+            </div>
+            <div class="therefeed">
+                <div class="feedAlert">
+                    Get the Feeds Here
+                </div>
+                <post-templet></post-templet>
+               </div>
+        </div>
+        
+    </div>
+    <notify-me></notify-me>
+    </div>

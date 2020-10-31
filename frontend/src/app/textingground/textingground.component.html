@@ -1,0 +1,24 @@
+<div *ngIf ="f; else elseBlock">
+    
+
+<div class="contect-detail">
+    <img class="dp" src="..\assets\cancer-hospital.jpg" alt="not found" width="50" height=auto>
+    <p class="messenger-name">{{user}}</p>
+</div>
+<div class="messaging-manage">
+    <div class="message" >
+        <h>hii ayush ujfuweqnf vji vernvienrvuinrvj rjv wrvjr vje vhf vher vjw evkr venfvj rjkv wrjnvj vjk vjwnvjw vjk vj vjkwr vjk vjrvnuvnfv , vm vsdnvoqwnvqwj vjw vasdn cjwnvqruhvnerv  vm,sdncornvkj v vrnvme,r vjasd </h>
+    </div>
+</div>
+<div class="create-message">
+    <div class="write-message">
+        <textarea (keydown.enter)="sendMessage()" [(ngModel)]="message" class="messa" placeholder="write here...."></textarea>
+    </div>
+    <mat-icon (click)="sendMessage()" class="send-icon" aria-hidden="false" aria-label="people">near_me</mat-icon>
+</div>
+</div>
+<ng-template #elseBlock>
+    <div class="lol">
+        You are<br> connected with <br>no one<br>🤧🤧🤧🤧🤧
+    </div>
+</ng-template>

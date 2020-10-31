@@ -1,48 +1,48 @@
 <div>
 <app-header></app-header>
 </div>
-        <div id="showcase">
-            <div class="topmost">
-                <div class="post-gui">
-                <span>Create Post</span>
+<div id="showcase">
+    <div class="topmost">
+        <div class="post-gui">
+        <span>Create Post</span>
+        </div>
+        <div class="cancell">
+            <span (click)="hidepostarea()" style="cursor: pointer;" class="material-icons">
+                clear
+                </span>
+        </div>
+    </div>
+        <div class="dopost">
+            <div class="uppers">
+                <div class="profile-pic">
+                    <img class="feed-image" src="..\assets\cancer-hospital.jpg" alt="not found" >
                 </div>
-                <div class="cancell">
-                    <span (click)="hidepostarea()" class="material-icons">
-                        clear
-                        </span>
+                <div class="profile-name">
+                    Ayush Yadav
                 </div>
             </div>
-                <div class="dopost">
-                    <div class="uppers">
-                        <div class="profile-pic">
-                            <img class="feed-image" src="..\assets\cancer-hospital.jpg" alt="not found" >
-                        </div>
-                        <div class="profile-name">
-                            Ayush Yadav
-                        </div>
-                    </div>
-                    <div class="actua">
-                        <textarea (keydown.enter)="sendMessage()" [(ngModel)]="caption" class="textfield" rows="10" placeholder="Start Your Post... " ></textarea>
-                    </div>
-                    <div id="prevpic" class="prevpic">
-                        <span (click)="leavePic()" style="float: right;">X</span>
-                        <img width="100%" [src]="url">
-                    </div>
-                </div>
-            <div class="features">
-                
-                <div class="optio">
-                    <input type="file" (change)="showpic($event)" id="post-pic" name="post-pic"  accept="image/*">
-                    <span onclick="document.getElementById('post-pic').click();" class="material-icons">
-                        add_photo_alternate
-                        </span>ADD PICTURE
-                </div>
-               
-                <div class="post-btn">
-                    <button (click)="uploaddp()"  mat-flat-button color="accent">Post</button>
-                </div>
+            <div class="actua">
+                <textarea (keydown.enter)="sendMessage()" [(ngModel)]="caption" class="textfield" rows="10" placeholder="Start Your Post... " ></textarea>
+            </div>
+            <div id="prevpic" class="prevpic">
+                <span (click)="leavePic()" style="float: right;">X</span>
+                <img width="100%" [src]="url">
             </div>
         </div>
+    <div class="features">
+        
+        <div class="optio">
+            <input type="file" (change)="showpic($event)" id="post-pic" name="post-pic"  accept="image/*">
+            <span onclick="document.getElementById('post-pic').click();" class="material-icons">
+                add_photo_alternate
+                </span>ADD PICTURE
+        </div>
+       
+        <div class="post-btn">
+            <button (click)="uploadpost()"  mat-flat-button color="accent">Post</button>
+        </div>
+    </div>
+</div>
 <div class="feed-body">
     <div class="left">
         <div class="menu">
@@ -75,8 +75,9 @@
                 </div>
             </div>
         </div>
-        <post-templet></post-templet>
-        <post-templet></post-templet>
+        <div class="feeddw" *ngFor="let feed of feeds">
+            <post-templet [feedData]="feed" ></post-templet>
+        </div>
     </div>
     <notify-me></notify-me>
     
