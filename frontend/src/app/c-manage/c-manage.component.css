@@ -235,3 +235,17 @@ textarea:focus
     text-align: center;
     margin: 20px auto auto auto;
 }
+#notifiyfor{
+    padding:20px;
+    background-color:rgb(255, 255, 255);
+    margin-top: 60px;
+    opacity: 1;
+    position: fixed;
+    left: 45%;
+    display: none;
+    width:300px;
+    height: 200px;
+    border: 1px solid rgb(204, 107, 155);
+    box-shadow: 0px 3px 10px rgb(189, 103, 146);
+    border-radius: 5px;
+}

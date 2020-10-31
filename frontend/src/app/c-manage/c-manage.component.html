@@ -46,6 +46,9 @@
                        </div>
                     </ul>
                     </div>
+                    <div class="notifcont">
+                        <button class="fnbtn" (click)="opennotifBox()" mat-raised-button color="primary">Create Notification</button>
+                    </div>
                 </div>
             </div>
             <ng-template  #noalldatapresent>
@@ -165,4 +168,19 @@
         <button class="fnbtn" (click)="livetheSearch()"  mat-stroked-button color="accent">Confirm</button>
         <button class="fnbtn" (click)="backconfbox()"  mat-stroked-button color="primary">Back</button>
     </div>
+</div>
+<div id="notifiyfor">
+<label>
+    Header:
+</label>
+<input [(ngModel)]="notihead" class="forpost" >
+<label>
+    Notification Body:
+</label>
+<input [(ngModel)]="notibody" class="forpost" >
+<br>
+<button class="fnbtn" (click)="backnotibox()" mat-raised-button color="warn">Back</button>
+        
+<button class="fnbtn" (click)="submitniti()" mat-raised-button color="warn">send</button>
+        
 </div>

@@ -23,3 +23,11 @@ mat-divider{
     padding:20px 10px;
     border-bottom:1px solid rgb(136, 136, 136);
 }
+.name{
+    color: rgb(175, 132, 112);
+    padding-right: 4px;
+}
+.head{
+    color: rgb(153, 45, 45);
+    padding-right: 4px;
+}

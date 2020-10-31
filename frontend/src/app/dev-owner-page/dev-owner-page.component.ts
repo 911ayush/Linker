@@ -151,8 +151,8 @@ export class DevOwnerPageComponent implements OnInit {
    // var id = localStorage.getItem('id');
     this.connectionService.getownerdp().subscribe(
       data=> { 
-        console.log("kk");
-          var TYPED_ARRAY = new Uint8Array(data.avtar.data);
+        console.log(data);
+          var TYPED_ARRAY = new Uint8Array(data.avatar.data);
           const STRING_CHAR = TYPED_ARRAY.reduce((data, byte)=> {
             return data + String.fromCharCode(byte);
             }, '');

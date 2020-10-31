@@ -9,7 +9,7 @@
         <mat-divider></mat-divider>
         <div class="noification1y1">
             <div class="notification" *ngFor="let notif of notifications">
-                <span routerLink="/dev/:id">{{notif.name}}</span>
+                <span class="name">{{notif.name}}</span><span class="head">{{notif.head}}</span><span>{{notif.body}}</span>
             </div>
         </div>
     </div>

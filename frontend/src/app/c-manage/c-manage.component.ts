@@ -2,12 +2,15 @@ import { Component, OnInit } from '@angular/core';
 import {FormGroup, FormControl} from '@angular/forms';
 import { JobService } from '../job.service';
 import {CdkDragDrop, moveItemInArray, transferArrayItem} from '@angular/cdk/drag-drop';
+import { NotificationService } from '../notification.service';
 @Component({
   selector: 'app-c-manage',
   templateUrl: './c-manage.component.html',
   styleUrls: ['./c-manage.component.css']
 })
 export class CManageComponent implements OnInit {
+  notibody:string='';
+  notihead:string='';
   post:string='';
   createdBy:string='';
   selectedRange:any;
@@ -26,7 +29,7 @@ export class CManageComponent implements OnInit {
   skilltoa="";
   skills:string[]=["ayush","yadav"];
   
-  constructor(private jobService: JobService) { }
+  constructor(private notificationService: NotificationService ,private jobService: JobService) { }
 
   ngOnInit(): void {
     this.fetchCurrentOpenings();
@@ -170,6 +173,29 @@ export class CManageComponent implements OnInit {
     else{
       console.log("shown");
       document.getElementById(id).style.display="none";
+    }
+  }
+  opennotifBox(){
+    document.getElementById('notifiyfor').style.display="block";
+  }
+  backnotibox(){
+    document.getElementById('notifiyfor').style.display="none"; 
+  }
+  submitniti(){
+    if(this.notibody.length==0||this.notihead.length==0){
+      alert("fill the form");
+    }
+    else{
+      var notif={
+        'head':this.notihead,
+        'body':this.notibody
+      }
+      this.notificationService.generatenotific(notif).subscribe(
+        (data)=>{console.log(data);
+          document.getElementById('notifiyfor').style.display="none";},
+        (error)=>console.log(error)
+      );
+
     }
   }
 }
