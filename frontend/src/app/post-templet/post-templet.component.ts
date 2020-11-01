@@ -57,7 +57,7 @@ export class PostTempletComponent implements OnChanges {
     this.connectionService.getothersdp(this.feedData.owner).subscribe(
       data=> { 
         console.log(data);
-          var TYPED_ARRAY = new Uint8Array(data.avtar.data);
+          var TYPED_ARRAY = new Uint8Array(data.avatar.data);
           const STRING_CHAR = TYPED_ARRAY.reduce((data, byte)=> {
             return data + String.fromCharCode(byte);
             }, '');

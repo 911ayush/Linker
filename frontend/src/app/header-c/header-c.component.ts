@@ -15,10 +15,23 @@ export class HeaderCComponent implements OnInit {
   userstos:any=[];
   comps:any=[];
   compstos:any=[];
-  constructor(private router:Router, private connectionService: ConnectionServiceService,private domSanitizer:DomSanitizer) { }
+  constructor(private router:Router, private connectionService: ConnectionServiceService,private domSanitizer:DomSanitizer) { 
+    this.checkLog();
+  }
 
   ngOnInit(): void {
     this.initlist();
+  }
+  checkLog(){
+    if(localStorage.getItem('As')!='company'){
+      this.router.navigate(['/']);
+    }
+  }
+  logout(){
+    localStorage.removeItem('token');
+    localStorage.removeItem('As');
+    localStorage.removeItem('id');
+    this.checkLog();
   }
   nevigateToDevById(event){
     console.log("yes called");
@@ -60,7 +73,7 @@ export class HeaderCComponent implements OnInit {
         data=> { 
           console.log(data);
             var buffdp = data;
-            var TYPED_ARRAY = new Uint8Array(data);
+            var TYPED_ARRAY = new Uint8Array(data.avatar.data);
             const STRING_CHAR = TYPED_ARRAY.reduce((data, byte)=> {
               return data + String.fromCharCode(byte);
               }, '');
@@ -80,7 +93,7 @@ export class HeaderCComponent implements OnInit {
         data=> { 
           console.log(data);
             var buffdp = data;
-            var TYPED_ARRAY = new Uint8Array(data);
+            var TYPED_ARRAY = new Uint8Array(data.avatar.data);
             const STRING_CHAR = TYPED_ARRAY.reduce((data, byte)=> {
               return data + String.fromCharCode(byte);
               }, '');

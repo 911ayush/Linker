@@ -1,0 +1,32 @@
+.test-cont{
+    width:800px;
+    height:auto;
+    border: 1px solid black;
+}
+.test-head{
+    width:100%;
+    height:30px;
+}
+.test-body{
+    width:100%;
+    height:300px;
+}
+.test-side{
+    width:20%;
+    padding: 10px;
+    height: 280px;
+    float: left;
+    overflow-x: hidden;
+    border-right: 1px solid black;
+    overflow-y: auto;
+}
+.test-main{
+    float: left;
+    padding: 20px;
+    width:70%;
+    height: 280px;
+}
+.question{
+    border:1px solid transparent;
+    font-size: 18px;
+}

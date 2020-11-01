@@ -35,4 +35,15 @@ export class NotificationService {
     this.socket.emit('join',{room:id});
   }
  
+
+  getNewnotification(){
+    let observable = new Observable<{head:string,body:string}>(observer=>{
+      this.socket.on('message',(data)=>{
+        observer.next(data);
+      });
+      return () => {this.socket.disconnect(); }
+    });
+    return observable;
+  }
+ 
 }

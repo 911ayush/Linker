@@ -25,6 +25,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatNativeDateModule } from '@angular/material/core';
+import { MatBadgeModule } from '@angular/material/badge';
 
 import { SignLogComponent } from './sign-log/sign-log.component';
 import { HomePageComponent } from './home-page/home-page.component';
@@ -54,6 +55,7 @@ import { ViewCompComponent } from './view-comp/view-comp.component';
 import { ViewCFeedsComponent } from './view-cfeeds/view-cfeeds.component';
 import { ClosedjobsCompComponent } from './closedjobs-comp/closedjobs-comp.component';
 import { ErrorHendlerService } from './error-hendler.service';
+import { TestComponent } from './test/test.component';
 
 
 
@@ -84,7 +86,8 @@ import { ErrorHendlerService } from './error-hendler.service';
     OtherProfileComponent,
     ViewCompComponent,
     ViewCFeedsComponent,
-    ClosedjobsCompComponent
+    ClosedjobsCompComponent,
+    TestComponent
   ],
   imports: [
     BrowserModule,
@@ -100,6 +103,7 @@ import { ErrorHendlerService } from './error-hendler.service';
     FormsModule,
     MatChipsModule,
     MatDividerModule,
+    MatBadgeModule,
     MatInputModule,
     ReactiveFormsModule,
     MatButtonModule,

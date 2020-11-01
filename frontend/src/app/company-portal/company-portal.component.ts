@@ -37,6 +37,7 @@ export class CompanyPortalComponent implements OnInit {
 
   ngOnInit(): void {
     this.fetchData();
+    this.getdp();
   }
   fetchData(){
     this.connectionService.getcprofile().subscribe((data) => {
@@ -88,7 +89,7 @@ export class CompanyPortalComponent implements OnInit {
   }
   uploaddp(){
     const formData = new FormData();
-    formData.append('profilepic',this.image);
+    formData.append('image',this.image);
     this.connectionService.uploadcdp(formData).subscribe(
       (res)=> {
         document.getElementById('dpcb').style.display="none";
@@ -107,7 +108,7 @@ export class CompanyPortalComponent implements OnInit {
     var id = localStorage.getItem('id');
     this.connectionService.getcowdp().subscribe(
       data=> { 
-        console.log("kk");
+        console.log(data);
           var buffdp = data;
           var TYPED_ARRAY = new Uint8Array(data.avatar.data);
           const STRING_CHAR = TYPED_ARRAY.reduce((data, byte)=> {
@@ -122,7 +123,7 @@ export class CompanyPortalComponent implements OnInit {
           //console.log(new Blob([data]));
         // }
       },
-      error => console.log(error.status)
+      error => console.log(error.error)
     );
   }
   backdpcb(){

@@ -8,9 +8,10 @@
             <mat-icon class="icon" routerLink="/feed" aria-hidden="true" aria-label="home">home</mat-icon>
             <mat-icon class="icon" routerLink="/network" aria-hidden="false" aria-label="people">people</mat-icon>
             <mat-icon class="icon" routerLink="/work-related" aria-hidden="false" aria-label="people">work</mat-icon>
-            <mat-icon class="icon" routerLink="/notification" aria-hidden="false" aria-label="notification">notifications</mat-icon>
+            <mat-icon class="icon" [matBadge]="count" matBadgeColor="warn" routerLink="/notification" aria-hidden="false" aria-label="notification">notifications</mat-icon>
             <mat-icon class="icon" routerLink="/message" aria-hidden="false" aria-label="message">message</mat-icon>
             <mat-icon class="icon" routerLink="/profile" aria-hidden="false" aria-label="message">mood</mat-icon>
+            <mat-icon class="icon" (click)="logout()" aria-hidden="false" aria-label="trending_flat">trending_flat</mat-icon>
     </div>
 </div>
 <div id="sidesearchreasult">

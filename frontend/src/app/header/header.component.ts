@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component,Input, OnInit } from '@angular/core';
 import { ConnectionServiceService } from '../connection-service.service';
 import { DomSanitizer } from '@angular/platform-browser';
 import { Router } from '@angular/router';
@@ -10,16 +10,30 @@ import { Router } from '@angular/router';
 })
 export class HeaderComponent implements OnInit {
   search="";
+  //count:number;
+  @Input() count:number;
   dpo:any=["./assets/cancer-hospital.jpg","./assets/anonymous.PNG"];
   dpp:any;
   users:any=[];
   userstos:any=[];
   comps:any=[];
   compstos:any=[];
-  constructor(private router:Router, private connectionService: ConnectionServiceService,private domSanitizer:DomSanitizer) { }
-
+  constructor(private router:Router, private connectionService: ConnectionServiceService,private domSanitizer:DomSanitizer) {
+    this.checkLog();
+   }
   ngOnInit(): void {
     this.initlist();
+  }
+  checkLog(){
+    if(localStorage.getItem('As')!='developer'){
+      this.router.navigate(['/']);
+    }
+  }
+  logout(){
+    localStorage.removeItem('token');
+    localStorage.removeItem('As');
+    localStorage.removeItem('id');
+    this.checkLog();
   }
   nevigateToDevById(event){
     console.log("yes called");
@@ -60,7 +74,7 @@ export class HeaderComponent implements OnInit {
       this.connectionService.getothersdp(this.userstos[i]._id).subscribe(
         data=> { 
           console.log(data);
-            var TYPED_ARRAY = new Uint8Array(data.avtar.data);
+            var TYPED_ARRAY = new Uint8Array(data.avatar.data);
             const STRING_CHAR = TYPED_ARRAY.reduce((data, byte)=> {
               return data + String.fromCharCode(byte);
               }, '');
@@ -80,7 +94,7 @@ export class HeaderComponent implements OnInit {
         data=> { 
           console.log(data);
             var buffdp = data;
-            var TYPED_ARRAY = new Uint8Array(data);
+            var TYPED_ARRAY = new Uint8Array(data.avatar.data);
             const STRING_CHAR = TYPED_ARRAY.reduce((data, byte)=> {
               return data + String.fromCharCode(byte);
               }, '');

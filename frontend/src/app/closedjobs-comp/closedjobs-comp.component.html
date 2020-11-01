@@ -1,5 +1,5 @@
 <div>
-    <app-header></app-header>
+    <app-header-c></app-header-c>
 </div>
 <div class="job-main">
     <div class="job-wrapp">
@@ -11,18 +11,44 @@
             </div>
             <div class="table-data">
                 <div *ngIf="isClosedList; else noOneClosed">
-                    <div class="open" *ngFor="let closedone of closedList">
+                    <div class="outerBox" *ngFor="let closedjob of closedList;let i = index">
                         <div class="post">
-                            {{closedone.post}}
+                            <div class="titleof">
+                                Post:
+                            </div>
+                            {{closedjob.post}}
                         </div>
                         <div class="fromwhom">
-                            {{closedone.createdBy}}
+                            <div class="titleof">
+                                Created By
+                            </div>
+                            {{closedjob.createdBy}}
                         </div>
-                        <div class="form-area">
-                           <div *ngFor="let skill of onlinejob.skills">
-                               {{skill}}
+                        <div class="displayfunction" id="{{i}}" (click)="shoeDetails($event)">
+                            Show/Hide Details
+                        </div>
+                        <div class="form-area" id="form-area{{i}}" >
+                            <div class="titleof">
+                                Description
+                            </div>
+                            {{closedjob.description}}
+                            <div class="titleof">
+                                Skills
+                            </div>
+                            <ul>
+                           <div *ngFor="let skill of closedjob.recommended">
+                              <li> {{skill}}</li>
                            </div>
+                        </ul>
                         </div>
+                        <div class="applicant-list">
+                            <ul>
+                            <div class="applicant-rows" *ngFor="let applicant of closedjob.applicants">
+                                <li (click)="seedev($event)" [id]="applicant.dev">{{applicant.name}}</li>
+                            </div>
+                        </ul>
+                        </div>
+
                     </div>
                 </div>
                 <ng-template  #noOneClosed>

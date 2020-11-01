@@ -20,13 +20,14 @@ import { OtherProfileComponent } from './other-profile/other-profile.component';
 import { ViewCompComponent } from './view-comp/view-comp.component';
 import { ViewCFeedsComponent } from './view-cfeeds/view-cfeeds.component';
 import { ClosedjobsCompComponent } from './closedjobs-comp/closedjobs-comp.component';
-
+import { TestComponent } from './test/test.component';
 
 const routes: Routes = [
   { path: '' , component: HomePageComponent},
   { path: 'auth/company' , component:SignLogCompanyComponent},
   { path: 'auth/developer' , component: SignLogComponent},
   { path: 'feed' , component: FeedComponent,canActivate:[AuthGuard]},
+  { path: 'test' , component: TestComponent,canActivate:[AuthGuard]},
   { path: 'notification' , component: NotificationPageComponent,canActivate:[AuthGuard]},
   { path: 'work-related' , component: JobpageComponent,canActivate:[AuthGuard]},
   { path: 'network' , component: DevNetworkComponent,canActivate:[AuthGuard]},

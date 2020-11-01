@@ -28,3 +28,26 @@
 .noOneClosed{
     color: rgb(226, 190, 190);
 }
+.outerBox{
+    border-bottom: 1px solid rgb(167, 164, 164);
+    width: 90%;
+}
+.post{
+    font-size: 20px;
+    margin-bottom: 3px;
+}
+.titleof{
+    font-size: 15px;
+    color: rgb(167, 133, 133);
+}
+.fromwhom{
+    font-size: 17px;
+    color: rgb(71, 68, 68);
+}
+.displayfunction{
+    font-size: 13px;
+    color: rgb(57, 136, 156);
+}
+.form-area{
+    display: none;
+}

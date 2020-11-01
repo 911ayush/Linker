@@ -7,6 +7,7 @@ import { ConnectionServiceService } from './connection-service.service';
   providedIn: 'root'
 })
 export class AuthGuard implements CanActivate {
+//export class AuthGuard{
   constructor(private authservice: ConnectionServiceService,private router: Router){}
   canActivate():boolean{
     if (this.authservice.loggedIn()){
@@ -16,4 +17,5 @@ export class AuthGuard implements CanActivate {
       return false
     }    
   }
+   
 }
