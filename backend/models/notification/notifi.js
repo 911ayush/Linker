@@ -20,9 +20,12 @@ require('../../db/connect')
      subscribers: [{
                  subscriber: {
                      type: mongoose.Schema.Types.ObjectID,
-                     active:  Boolean,
-                     default: true
-                 }
+                 },
+         active: {
+              type: Boolean,
+              default: true
+         }
+
                  }],
      owner : {
                  type: mongoose.Schema.Types.ObjectID,

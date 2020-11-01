@@ -18,6 +18,7 @@ const cauth= require('../../authentication/cauth')
                 owner: req.user._id,
                 subscribers : req.user.subscribers || compProfile.subscribers
           })
+             notification.subscribers.active= true
           await notification.save()
       res.status(200).send( notification)
       }

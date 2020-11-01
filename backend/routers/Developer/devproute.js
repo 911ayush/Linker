@@ -70,8 +70,7 @@ const cdauth= require('../../authentication/cdauth')
        if(!devprofile || ! devprofile.avatar) {
            return res.status(400).send('Hey there are no content for you')
        }
-
-       res.status(200).send(devprofile.image)
+       res.status(200).send({ avatar : devprofile.avatar })
    }
 catch(e){
     res.status(400).send(e)

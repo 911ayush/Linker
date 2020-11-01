@@ -3,6 +3,7 @@ const mongoose= require('mongoose')
  const Dev= require ('../devaccount/devprofile')
  const time= require('../../src/utils')
 const fetch = require('node-fetch');
+const ComProfile= require('../compaccount/compprofile')
 
 
    // Basically here owner mean Company who Creates Job
@@ -73,11 +74,11 @@ const fetch = require('node-fetch');
      jobSchema.methods.checkDeadline= async function() {
          const job = this
          const status= true
+         const  city=  await ComProfile.findOne({ owner : job.owner })
+             const cityfetch= city.address || 'Delhi'
          const promise= new Promise((accept,reject)=>{
-             time('varanasi',accept)
+             time(cityfetch,accept)
          })
-         //  In future it will be company city
-         // We will implement time also for it
          await  promise.then( (data) => {
              if (data.wether.localtime < job.selectedRange.start.toISOString().split('T')[0]) {
                              throw new Error('Registraion is not start yet')

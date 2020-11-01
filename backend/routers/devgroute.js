@@ -25,8 +25,6 @@ const Notification= require('../models/notification/notifi')
            }
               const logToken= await dev.generateToken()
 
-          // Socket Connection Area
-          // Do not try to  touch hazard zone
           res.status(201).send({dev,logToken})
     }
     catch(e) {
@@ -34,33 +32,32 @@ const Notification= require('../models/notification/notifi')
     }
   })
 
+router.get('/devs/logout',dauth,async(req,res)=>{
+    try{
+        req.user.tokens= req.user.tokens.filter((token)=>{
+            return  token.token !== req.token
+        })
+        req.user.save()
+        res.status(200).send()
+    }
+    catch(e){
+        res.status(401).send()
+    }
+})
 
 
-//    router.get('/subscription',cdauth,async (req,res)=>{
-//     const UserId= req.user._id
-//     const userId= UserId.toString()
-//     const changeStream=Notification.watch()
-//     io.on('connection',async (socket)=>{
-//         //   socket.join(userId)
-//         console.log('connection getting')
-//         socket.emit('message',generateMessage('Admin','if question is right then there will be a answer necessarly'))
-//         // changeStream.on('change',async (data)=>{
-//         //           const findTarget = {
-//         //               head: data.fullDocument.head,
-//         //               body: data.fullDocument.body,
-//         //               redirect: data.fullDocument.redirect
-//         //           }
-//         //           if(data.subscribers) {
-//         //               data.fullDocument.subscribers.forEach((subscriber)=>{
-//         //                       socket.to(`${subscriber.toString()}`).emit(findTarget)
-//         //               })
-//         //           }
-//         // })
-//
-//     })
-//
-//     res.status(200).send({ message: 'Socket add successfully'})
-// })
+
+   router.get('/devs/logoutall',dauth,async(req,res)=>{
+    try{
+        req.user.tokens=[]
+        console.log('wiped out')
+        await req.user.save()
+        res.status(200).send()
+    }
+    catch(e){
+        res.status(500).send()
+    }
+})
 
 
 

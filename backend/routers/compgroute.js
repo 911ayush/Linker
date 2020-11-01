@@ -33,4 +33,32 @@ router.post('/compg/login',async(req,res)=>{
     }
 })
 
+
+
+  router.get('/comps/logout',cauth,async(req,res)=>{
+    try{
+        req.user.tokens= req.user.tokens.filter((token)=>{
+            return  token.token !== req.token
+        })
+      await  req.user.save()
+        res.status(200).send()
+    }
+    catch(e){
+        res.status(401).send()
+    }
+})
+
+
+router.get('/comps/logoutall',cauth,async(req,res)=>{
+    try{
+        req.user.tokens=[]
+        console.log('wiped out')
+        await req.user.save()
+        res.status(200).send()
+    }
+    catch(e){
+          res.status(500).send({error: 'could  not logout from all devices'})
+        }
+})
+
   module.exports=  router

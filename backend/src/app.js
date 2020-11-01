@@ -11,15 +11,38 @@ const feedComp= require('../routers/Company/compfeedrouter')
 const feedDev= require('../routers/Developer/devfeedrouter')
 const likePost= require('../routers/likepostroute')
 const compNotiRouter= require('../routers/Company/compnotirouter')
+const devNotiRouter= require('../routers/Developer/devnotirouter')
+const devEvaluationRouter= require('../routers/Developer/evaluationroute')
 const app= express()
    app.use(express.json())
 const path= require('path')
-const publicDirectoryPath = path.join(__dirname, '../public')
-app.use(express.static(publicDirectoryPath))
+const Jquiz= require('../models/evaluation/jquiz')
+const Webquiz = require('../models/evaluation/webquiz')
 
-    app.get('/',async(req,res)=>{
-             res.send('Hello Server is ready to work')
+//
+// const publicDirectoryPath = path.join(__dirname, '../public')
+// app.use(express.static(publicDirectoryPath))
+
+    app.post('/jpush',async(req,res)=>{
+                 try{
+                      const jquiz= new Jquiz(req.body)
+                       await  jquiz.save()
+                       res.status(200).send('Saved Successful')
+                 }
+                 catch(e){
+                        res.status(404).send({ error: e.toString() })
+                 }
     })
+app.post('/wpush',async(req,res)=>{
+    try{
+        const wquiz= new Webquiz(req.body)
+        await  wquiz.save()
+        res.status(200).send('Saved Successful')
+    }
+    catch(e){
+        res.status(404).send({ error: e.toString() })
+    }
+})
 app.use(devgRouter)
 app.use(devProfileRouter)
 app.use(compgRouter)
@@ -32,4 +55,6 @@ app.use(feedComp)
 app.use(feedDev)
 app.use(likePost)
 app.use(compNotiRouter)
+app.use(devNotiRouter)
+app.use(devEvaluationRouter)
 module.exports= app

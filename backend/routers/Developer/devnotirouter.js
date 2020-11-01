@@ -1,5 +1,6 @@
 const  Notifi=  require('../../models/notification/notifi')
  const   express= require('express')
+const dauth = require('../../authentication/dauth')
   const router=  new express.Router()
 
       // to fetch all route
@@ -29,11 +30,12 @@ const  Notifi=  require('../../models/notification/notifi')
           try {
            const  notifications =  await  Notifi.find({ 'subscribers.subscribe' :  req.user._id })
 
-                  if(!index){
+                  if(! notifications){
                        return res.status(404).send({ warn: ' No notification for you'})
                   }
 
-                   notifications.subscribers.active = false
+                      notifications.subscribers.active= false
+                 await  notifications.save()
 
               res.status(200).send()
           }

@@ -82,7 +82,7 @@
   router.post('/compprofile/create/image',cauth,upload.single('image'),async (req,res)=>{
       const   buffer= await sharp(req.file.buffer).resize({height: 300, width: 300}).png().toBuffer()
       const compprofile= await CompProfile.findOne({owner: req.user._id})
-      compprofile.avatar=buffer
+      compprofile.image=buffer
       await compprofile.save()
       res.status(202).send('Image Uploaded successfully')
   },(error,req,res,next)=>{
@@ -110,7 +110,7 @@
               return res.status(400).send('Hey there are no content for you')
           }
 
-          res.status(200).send(compprofile.image)
+          res.status(200).send({  avatar: compprofile.image })
       }
       catch(e){
           res.status(500).send({ error : e.toString() })

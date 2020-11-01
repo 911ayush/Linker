@@ -37,7 +37,7 @@
                 subscriber:{
                      type: mongoose.Schema.Types.ObjectID
                 }
-       }]
+       }],
     },{
     timestamps: true
   })
