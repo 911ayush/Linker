@@ -76,32 +76,6 @@
                         <mat-divider></mat-divider>
 
                 </div>
-                <div class="intrests">
-                    <div class="skill-header">
-                        Interest
-                    </div>
-                    <div class="sills">
-                        <div *ngIf="binterest else ielseBlock">
-                            <mat-chip-list
-                            class="intrest-list"
-                            cdkDropList 
-                            cdkDropListOrientation="horizontal"
-                            (cdkDropListDropped)="intrest($event)">
-                            <mat-chip
-                            class="chip"
-                            cdkDrag
-                            *ngFor="let intrest of intrests">
-                            {{intrest}}
-                            </mat-chip>
-                            </mat-chip-list>
-                        </div>
-                        <ng-template #ielseBlock>
-                            <div class="nabout-containt">
-                                Add Few Field of Interest
-                            </div>
-                        </ng-template>
-                   </div>
-                </div>
             </div>
             <div class="myupload">
                 <h>My Feeds</h>
@@ -143,9 +117,6 @@
             <div class="option" (click)="opskills()">
                 Skills
             </div>
-            <div class="option" (click)="opinterest()">
-                Interest
-            </div>
         </div>
         <div class="edit" id="name">
             Change Your Name
@@ -186,40 +157,12 @@
                     class="intrest-list"
                     cdkDropList 
                     cdkDropListOrientation="horizontal"
-                    (cdkDropListDropped)="intrest($event)">
+                    (cdkDropListDropped)="skill($event)">
                     <mat-chip
                     class="chip"
                     cdkDrag
                     *ngFor="let skill of skillstoc" [id]="skill" (click)="delSkill($event)">
                     {{skill}}
-                    </mat-chip>
-                    </mat-chip-list>
-                    </div>
-                    
-                </div>
-            </div>
-        </div>
-        <div class="edit" id="interest">
-            Edit Your Field Of Interest
-            <div class="mini-takeaction-skill">
-                <div class="takeaction-skill">
-                    <div class="headskiledit">
-                        <label>Interests</label>
-                    <br>
-                    <input class="nameofcondidate-skill" (keydown.enter)="appendInter()" placeholder="Add Your interest" [(ngModel)]="intresttoc">
-                    </div>
-                   
-                    <div class="selectedskills">
-                        <mat-chip-list
-                    class="intrest-list"
-                    cdkDropList 
-                    cdkDropListOrientation="horizontal"
-                    (cdkDropListDropped)="intrest($event)">
-                    <mat-chip
-                    class="chip"
-                    cdkDrag
-                    *ngFor="let interest of intreststoc" [id]="interest" (click)="delinterest($event)">
-                    {{interest}}
                     </mat-chip>
                     </mat-chip-list>
                     </div>

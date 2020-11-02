@@ -11,7 +11,7 @@ import {map} from 'rxjs/operators';
   templateUrl: './other-profile.component.html',
   styleUrls: ['./other-profile.component.css']
 })
-export class OtherProfileComponent implements OnChanges  {
+export class OtherProfileComponent implements OnInit  {
  // id = "5f914c3953bbe8035c059ba3";
  compn:boolean;
   id;
@@ -26,7 +26,15 @@ export class OtherProfileComponent implements OnChanges  {
   location="";
   skills:string[]=[];
   intrests:string[]=[];
+  asss:boolean;
   constructor(private connectionService: ConnectionServiceService,private domSanitizer:DomSanitizer,private router:Router ,private route: ActivatedRoute) {
+    if(localStorage.getItem("As")==='company'){
+   //   alert("hhh");
+      this.asss=true;
+    }
+    else{
+      this.asss=false;
+    }
     router.events.subscribe(
       (val)=>{
         this.fetchup();
@@ -51,10 +59,9 @@ export class OtherProfileComponent implements OnChanges  {
   skill(event: CdkDragDrop<string[]>) {
     moveItemInArray(this.skills, event.previousIndex, event.currentIndex);
   }
-  intrest(event: CdkDragDrop<string[]>) {
-    moveItemInArray(this.intrests, event.previousIndex, event.currentIndex);
+  ngOnInit(){
+
   }
-  ngOnChanges(){}
   
   
     fetchup(){
@@ -99,12 +106,6 @@ export class OtherProfileComponent implements OnChanges  {
         
         this.bskill = false;
       }
-      if(this.intrests.length){
-        this.binterest = true; 
-      }
-      else{
-        this.binterest = false;
-      }
       }
       else{
         console.log("nothimd");
@@ -124,7 +125,7 @@ export class OtherProfileComponent implements OnChanges  {
       data=> { 
         console.log(data);
           var buffdp = data;
-          var TYPED_ARRAY = new Uint8Array(data);
+          var TYPED_ARRAY = new Uint8Array(data.avatar.data);
           const STRING_CHAR = TYPED_ARRAY.reduce((data, byte)=> {
             return data + String.fromCharCode(byte);
             }, '');

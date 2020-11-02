@@ -17,25 +17,18 @@ export class DevOwnerPageComponent implements OnInit {
   myfeeds:boolean=false;
   abou:boolean=false;
   bskill:boolean=false;
-  binterest:boolean=false;
   image;
   name="";
   nametoc="";
   about="";
   abouttoc="";
   location="";
-  intresttoc="";
   skilltoc="";
   locationtoc="";
   skills:string[]=[];
   skillstoc:string[]=[];
-  intrests:string[]=[];
-  intreststoc:string[]=[];
   skill(event: CdkDragDrop<string[]>) {
     moveItemInArray(this.skills, event.previousIndex, event.currentIndex);
-  }
-  intrest(event: CdkDragDrop<string[]>) {
-    moveItemInArray(this.intrests, event.previousIndex, event.currentIndex);
   }
 
   
@@ -51,6 +44,7 @@ export class DevOwnerPageComponent implements OnInit {
   fetchData(){
     this.connectionService.getprofile().subscribe((data) => {
       this.profstat = true;
+
       if(data){
         this.about = data.about;
        this.abouttoc = data.about;
@@ -63,9 +57,9 @@ export class DevOwnerPageComponent implements OnInit {
        while(this.skillstoc.length){
         this.skillstoc.pop();
       }
-      while(this.intreststoc.length){
-        this.intreststoc.pop();
-      }
+      // while(this.skillstoc.length){
+      //   this.skillstoc.pop();
+      // }
       for(var va of data.skills){
         this.skillstoc.push(va);
       }
@@ -86,12 +80,6 @@ export class DevOwnerPageComponent implements OnInit {
       else{
         
         this.bskill = false;
-      }
-      if(this.intrests.length){
-        this.binterest = true; 
-      }
-      else{
-        this.binterest = false;
       }
       }
       else{
@@ -143,8 +131,7 @@ export class DevOwnerPageComponent implements OnInit {
       );
       setTimeout(()=>{
         this.getdp();
-      },2000);
-      
+      },2000);  
   }
   getdp(){
     console.log("get dp");
@@ -172,20 +159,13 @@ export class DevOwnerPageComponent implements OnInit {
     document.getElementById('name').style.display="block";
     document.getElementById('location').style.display="none";
     document.getElementById('skills').style.display="none";
-    document.getElementById('interest').style.display="none";
   }
   backeditcompo(){
     while(this.skillstoc.length){
       this.skillstoc.pop();
     }
-    while(this.intreststoc.length){
-      this.intreststoc.pop();
-    }
     for (var i of this.skills) {
       this.skillstoc.push(i);
-    }
-    for (var i of this.intrests) {
-      this.intreststoc.push(i);
     }
     this.nametoc = this.name;
     this.locationtoc = this.location;
@@ -195,29 +175,21 @@ export class DevOwnerPageComponent implements OnInit {
     document.getElementById('name').style.display="block";
     document.getElementById('location').style.display="none";
     document.getElementById('skills').style.display="none";
-    document.getElementById('interest').style.display="none";
   }
   oplocation(){
     document.getElementById('name').style.display="none";
     document.getElementById('location').style.display="block";
     document.getElementById('skills').style.display="none";
-    document.getElementById('interest').style.display="none";
   }
   opskills(){
     document.getElementById('name').style.display="none";
     document.getElementById('location').style.display="none";
     document.getElementById('skills').style.display="block";
-    document.getElementById('interest').style.display="none";
   }
   opinterest(){
     document.getElementById('name').style.display="none";
     document.getElementById('location').style.display="none";
     document.getElementById('skills').style.display="none";
-    document.getElementById('interest').style.display="block";
-  }
-  appendInter(){
-    this.intreststoc.push(this.intresttoc);
-    this.intresttoc="";
   }
   appendSkill(){
     this.skillstoc.push(this.skilltoc);
@@ -226,9 +198,6 @@ export class DevOwnerPageComponent implements OnInit {
   delSkill(event){
     this.skillstoc.splice(this.skillstoc.indexOf(event.target.attributes.id.nodeValue),1);
     console.log(this.skillstoc);
-  }
-  delinterest(event){
-    this.intreststoc.splice(this.intreststoc.indexOf(event.target.attributes.id.nodeValue),1);
   }
   saveedits(){
     console.log(this.profstat);

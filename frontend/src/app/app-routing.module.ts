@@ -42,7 +42,7 @@ const routes: Routes = [
   { path: 'profile', component:DevOwnerPageComponent,canActivate:[AuthGuard]},
   { path: 'dev/:id', component:OtherProfileComponent,canActivate:[AuthGuard]},
   { path: 'company/:id', component:ViewCompComponent,canActivate:[AuthGuard]},
-  { path: 'company/:id/feed', component:ViewCFeedsComponent,canActivate:[AuthGuard]},
+  { path: 'feedsof/:id', component:ViewCFeedsComponent,canActivate:[AuthGuard]},
   { path: '**', redirectTo:'/', pathMatch:"full"}
 ];
 

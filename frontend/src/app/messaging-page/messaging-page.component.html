@@ -1,6 +1,9 @@
-<div>
-    <app-header></app-header>
+<div *ngIf="asss else dev">
+    <app-header-c></app-header-c>
 </div>
+<ng-template #dev>
+    <app-header></app-header>
+</ng-template>
 <div class="message-body">
     <div class="message-page-right">
         <div class="connection-list" >

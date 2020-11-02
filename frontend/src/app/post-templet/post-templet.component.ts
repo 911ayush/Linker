@@ -8,7 +8,7 @@ import { FeedService } from '../feed.service';
   templateUrl: './post-templet.component.html',
   styleUrls: ['./post-templet.component.css']
 })
-export class PostTempletComponent implements OnChanges {
+export class PostTempletComponent implements OnInit {
   img;
   dp:any="./assets/anonymous.PNG";
   userDetail:any;
@@ -17,7 +17,7 @@ export class PostTempletComponent implements OnChanges {
   name;
   constructor(private feedService: FeedService,private domSanitizer:DomSanitizer,private connectionService:ConnectionServiceService) { }
   @Input() feedData:any;
-  ngOnChanges(changes:SimpleChanges): void {
+  ngOnInit(): void {
     console.log(this.feedData);
     var TYPED_ARRAY = new Uint8Array(this.feedData.image.data);
   const STRING_CHAR = TYPED_ARRAY.reduce((data, byte)=> {
@@ -48,10 +48,27 @@ export class PostTempletComponent implements OnChanges {
         console.log(data);
         this.userDetail = data;
         this.name = data.title;
+        this.getcompdp();
       },
       (error)=>console.log(error)
     );
    }
+  }
+  getcompdp(){
+    this.connectionService.getothercdp(this.feedData.owner).subscribe(
+      data=> { 
+        console.log("kk");
+          var buffdp = data;
+          var TYPED_ARRAY = new Uint8Array(data.avatar.data);
+          const STRING_CHAR = TYPED_ARRAY.reduce((data, byte)=> {
+            return data + String.fromCharCode(byte);
+            }, '');
+          let base64String = btoa(STRING_CHAR);
+       
+         this.dp = this.domSanitizer.bypassSecurityTrustResourceUrl('data:image/jpg;base64, ' + base64String);
+      },
+      error => console.log(error.status)
+    );
   }
   getUserdp(){
     this.connectionService.getothersdp(this.feedData.owner).subscribe(

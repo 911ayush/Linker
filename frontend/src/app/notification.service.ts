@@ -28,7 +28,7 @@ export class NotificationService {
     
   }
   joinroom(){
-    
+    console.log("shdfbsf");
     var id = localStorage.getItem('id')
     console.log(id);
     console.log("done");

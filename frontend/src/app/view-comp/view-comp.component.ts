@@ -27,8 +27,8 @@ export class ViewCompComponent implements OnInit {
   skill(event: CdkDragDrop<string[]>) {
     moveItemInArray(this.lookup, event.previousIndex, event.currentIndex);
   }
-  
   constructor(private connectionService:ConnectionServiceService,private router: Router,private domSanitizer:DomSanitizer,private route: ActivatedRoute) {
+   
     router.events.subscribe(
       (val)=>{
         this.fetchup();
@@ -47,9 +47,9 @@ export class ViewCompComponent implements OnInit {
   fetchup(){
     this.readId();
       setTimeout(()=>{
-       // this.fetchData();
+        this.fetchData();
         this.getdp();
-      },2000
+      },1000
       );
   }
   readId(){
@@ -80,26 +80,25 @@ export class ViewCompComponent implements OnInit {
 
   getdp(){
     console.log("get dp");
-    //var id = localStorage.getItem('id');
-    // this.connectionService.getcodp(id).subscribe(
-    //   data=> { 
-    //     console.log("kk");
-    //       var buffdp = data;
-    //       var TYPED_ARRAY = new Uint8Array(data);
-    //       const STRING_CHAR = TYPED_ARRAY.reduce((data, byte)=> {
-    //         return data + String.fromCharCode(byte);
-    //         }, '');
-    //       let base64String = btoa(STRING_CHAR);
+    this.connectionService.getothercdp(this.id).subscribe(
+      data=> { 
+        console.log("kk");
+          var buffdp = data;
+          var TYPED_ARRAY = new Uint8Array(data.avatar.data);
+          const STRING_CHAR = TYPED_ARRAY.reduce((data, byte)=> {
+            return data + String.fromCharCode(byte);
+            }, '');
+          let base64String = btoa(STRING_CHAR);
        
-    //      this.dpo = this.domSanitizer.bypassSecurityTrustResourceUrl('data:image/jpg;base64, ' + base64String);
-
-    //     //  var buffer = new ArrayBuffer(64);
-    //     //  buffer = data;
-    //       //console.log(new Blob([data]));
-    //     // }
-    //   },
-    //   error => console.log(error.status)
-    // );
+         this.dpo = this.domSanitizer.bypassSecurityTrustResourceUrl('data:image/jpg;base64, ' + base64String);
+      },
+      error => console.log(error.status)
+    );
+  }
+  gotofeedpage(){
+    var gg = this.id.toString();
+    console.log(gg);
+    this.router.navigate(['/feedsof/',gg]);
   }
   follow(){
     this.connectionService.followCompany(this.id).subscribe(

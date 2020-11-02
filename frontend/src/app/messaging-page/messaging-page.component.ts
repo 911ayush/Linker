@@ -14,7 +14,18 @@ import { DomSanitizer } from '@angular/platform-browser';
   styleUrls: ['./messaging-page.component.css']
 })
 export class MessagingPageComponent implements OnInit {
-  constructor( private connectionService: ConnectionServiceService,private messageService: MessageServiceService,private domSanitizer:DomSanitizer) { }
+  asss:boolean;
+  constructor( private connectionService: ConnectionServiceService,private messageService: MessageServiceService,private domSanitizer:DomSanitizer) {
+    if(localStorage.getItem('As')=='company'){
+      console.log(localStorage.getItem('As'))
+      this.asss=true;
+    }
+    else{
+      console.log(localStorage.getItem('As'))
+      this.asss=false;
+    }
+   }
+  
   dpo:any=["./assets/cancer-hospital.jpg","./assets/anonymous.PNG"];
   dpp:any;
   users:any=[];

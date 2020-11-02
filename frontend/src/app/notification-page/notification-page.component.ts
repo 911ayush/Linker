@@ -18,7 +18,7 @@ export class NotificationPageComponent implements OnInit {
 
   ngOnInit() {
       this.notificationService.getNewnotification().subscribe(
-        (data)=>{console.log(data);
+        (data)=>{console.log("habdjhsbdjksdfkj");
         this.notifications.push(data);
         this.count=this.count+1;
         },

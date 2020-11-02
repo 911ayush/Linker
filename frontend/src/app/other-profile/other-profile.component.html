@@ -1,7 +1,12 @@
 
-<div>
-    <app-header></app-header>
+<div *ngIf="asss else dev">
+    <app-header-c></app-header-c>
 </div>
+<ng-template #dev>
+    <div>
+        <app-header></app-header>
+    </div>
+</ng-template>
 
 <div class="dev-page">
     <div class="right-corner">
@@ -70,37 +75,10 @@
                     </div>
                     <ng-template #selseBlock>
                         <div class="nabout-containt">
-                            Add Few skills
+                            he has not added any skill
                         </div>
                     </ng-template>
-                        <mat-divider></mat-divider>
 
-                </div>
-                <div class="intrests">
-                    <div class="skill-header">
-                        Interest
-                    </div>
-                    <div class="sills">
-                        <div *ngIf="binterest else ielseBlock">
-                            <mat-chip-list
-                            class="intrest-list"
-                            cdkDropList 
-                            cdkDropListOrientation="horizontal"
-                            (cdkDropListDropped)="intrest($event)">
-                            <mat-chip
-                            class="chip"
-                            cdkDrag
-                            *ngFor="let intrest of intrests">
-                            {{intrest}}
-                            </mat-chip>
-                            </mat-chip-list>
-                        </div>
-                        <ng-template #ielseBlock>
-                            <div class="nabout-containt">
-                                Add Few Field of Interest
-                            </div>
-                        </ng-template>
-                   </div>
                 </div>
                 
             </div>

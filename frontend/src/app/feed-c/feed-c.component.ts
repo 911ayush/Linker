@@ -98,7 +98,6 @@ export class FeedCComponent implements OnInit {
   getmyFeedscompony(){
     this.feedService.getmyFeedscompony().subscribe(
       (data)=>{
-      alert("got my feeds");
       this.feeds = data;
       console.log(this.feeds);
     },
