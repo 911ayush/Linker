@@ -110,7 +110,7 @@ catch(e){
 
 // This Area is for Who can see your profile but can not edit and can not see sensitive and confidental  info
 
-         router.get('/devprofile/:id/read',dauth,async (req,res)=>{
+         router.get('/devprofile/:id/read',cdauth,async (req,res)=>{
                         const devId=  req.params.id
         try {
             const devprofile =await  Devprofile.findOne({owner: devId})

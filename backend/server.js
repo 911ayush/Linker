@@ -33,6 +33,7 @@ const {
 
 
 
+
  /*
   const bodyParser= require('body-parser')
   app.use(bodyParser.json())
@@ -40,13 +41,12 @@ const {
  */
 
 
-
      const changeStream =  Notification.watch([{$project: {fullDocument: 1, operationType: 1}}])
         io.on('connection', (socket) => {
              socket.on('join', (options, callback) => {
                  const {error, user} = addUser({id: socket.id, ...options})
                  if (error) {
-                     return callback(error)
+                    // return callback(error)
                  }
                  socket.join(user.room)
                  changeStream.on("change", function (change) {
@@ -56,10 +56,33 @@ const {
                              }
                         }
                  })
-                 callback()
+                 // callback()
              })
          })
-
+ //
+ // const io = require('socket.io')(server)
+ // const jwt = require('jsonwebtoken')
+ //
+ // io.use(function(socket, next){
+ //     if (socket.handshake.query && socket.handshake.query.token){
+ //         jwt.verify(socket.handshake.query.token, 'iamdeveloper', function(err, decoded) {
+ //             if (err) return next(new Error('Authentication error'));
+ //               const id=  decoded._id
+ //             socket.id = id
+ //             next();
+ //         });
+ //     }
+ //     else {
+ //         next(new Error('Authentication error Could not find you'));
+ //     }
+ // })
+ //     .on('connection', function(socket) {
+ //         // Connection now authenticated to receive further events
+ //
+ //         socket.on('joinmyself', function(options) {
+ //             io.emit('message', message);
+ //         });
+ //     });
 
 
 

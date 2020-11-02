@@ -17,6 +17,7 @@ const Notification= require('../models/notification/notifi')
  })
 
   router.post('/devg/login',async(req,res)=>{
+      console.log('Ragh')
       try{
     const dev= await Dev.findByCredentials(req.body.email,req.body.password)
 

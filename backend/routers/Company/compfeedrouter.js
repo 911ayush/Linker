@@ -19,20 +19,6 @@ const upload= multer({
     }
 })
 // Any one which is authenticate can see image
-router.get('/devprofile/:id/avatar',cdauth,async(req,res)=>{
-    try {
-        const devId = req.params.id
-        const devprofile = await Devprofile.findOne({owner: devId})
-        if(!devprofile || ! devprofile.avatar) {
-            return res.status(400).send('Hey there are no content for you')
-        }
-        res.set('Content-Type','image/png')
-        res.status(200).send(devprofile.avatar)
-    }
-    catch(e){
-        res.status(400).send(e)
-    }
-})
 
  router.post('/compfeed/post',cauth,upload.single('pic'),async(req,res)=>{
           try{
